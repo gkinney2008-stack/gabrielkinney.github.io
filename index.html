@@ -12,13 +12,13 @@
         }
 
         :root {
-            --primary-color: #003366;
-            --accent-color: #00BCD4;
-            --text-dark: #333333;
+            --primary-color: #000000;
+            --accent-color: #ffffff;
+            --text-dark: #1a1a1a;
             --text-light: #666666;
-            --bg-light: #f5f5f5;
+            --bg-light: #f9f9f9;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
         }
 
         html {
@@ -61,12 +61,12 @@
         }
 
         nav a:hover {
-            color: var(--accent-color);
+            color: #cccccc;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
             color: var(--white);
             padding: 6rem 2rem;
             text-align: center;
@@ -86,7 +86,7 @@
         }
 
         .hero .tagline {
-            color: var(--accent-color);
+            color: #cccccc;
             font-weight: 600;
             margin-bottom: 2rem;
         }
@@ -111,14 +111,14 @@
         }
 
         .btn-primary {
-            background-color: var(--accent-color);
+            background-color: var(--white);
             color: var(--primary-color);
         }
 
         .btn-primary:hover {
-            background-color: #00A8BB;
+            background-color: #e0e0e0;
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 188, 212, 0.3);
+            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
         }
 
         .btn-secondary {
@@ -171,7 +171,7 @@
         }
 
         .about-text h3 {
-            color: var(--accent-color);
+            color: #000000;
             font-size: 1.3rem;
             margin-top: 0;
         }
@@ -192,7 +192,7 @@
         .skill-item {
             background-color: var(--bg-light);
             padding: 1rem;
-            border-left: 4px solid var(--accent-color);
+            border-left: 4px solid var(--primary-color);
             border-radius: 4px;
         }
 
@@ -221,14 +221,14 @@
 
         .project-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 51, 102, 0.15);
-            border-color: var(--accent-color);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-color);
         }
 
         .project-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            background: linear-gradient(135deg, #000000, #333333);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -310,6 +310,7 @@
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
+            border: 1px solid #d0d0d0;
         }
 
         .project-links {
@@ -331,13 +332,12 @@
         }
 
         .project-links a:hover {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            background-color: #333333;
         }
 
         /* Experience Section */
         .experience-item {
-            border-left: 4px solid var(--accent-color);
+            border-left: 4px solid var(--primary-color);
             padding-left: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -384,7 +384,7 @@
         }
 
         .contact-link:hover {
-            color: var(--accent-color);
+            color: #666666;
         }
 
         .contact-link-icon {
@@ -472,11 +472,11 @@
                 <h3>Engineering Excellence Through Innovation</h3>
                 <p>I'm a Park Scholar and Stamps Scholar studying Mechanical Engineering at North Carolina School of Science and Mathematics, with a passion for designing products that solve real-world problems.</p>
                 
-                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering challenges.</p>
+                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering competitions.</p>
                 
                 <p>Every project I tackle is driven by a commitment to accessibility, sustainability, and creating meaningful impact.</p>
 
-                <h3 style="color: var(--accent-color);">Core Competencies</h3>
+                <h3 style="color: var(--primary-color);">Core Competencies</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
                         <strong>Hardware Design</strong>
@@ -513,11 +513,11 @@
         <div class="projects-grid">
             <!-- Safe Step Well -->
             <div class="project-card">
-                <div class="project-image"><img src="images/capture.jpg" alt="Safe Step Well" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+                <div class="project-image"><img src="./images/capture.jpg" alt="Safe Step Well"></div>
                 <div class="project-content">
                     <h3>Safe Step Well</h3>
                     <div class="project-meta">Fall Detection System • 2026</div>
-                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity and <4% false positive rate. Bluetooth alerts notify caregivers in <1 second.</p>
+                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity.</p>
                     <div class="project-tags">
                         <span class="tag">Embedded Systems</span>
                         <span class="tag">C++</span>
@@ -537,7 +537,7 @@
                 <div class="project-content">
                     <h3>Polyphonic Piano & Sequencer</h3>
                     <div class="project-meta">Electronics • EE 4020 • 2025</div>
-                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer for programmable melodies. 5+ hours of circuit troubleshooting and optimization.</p>
+                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer.</p>
                     <div class="project-tags">
                         <span class="tag">Circuit Design</span>
                         <span class="tag">Analog Electronics</span>
@@ -556,7 +556,7 @@
                 <div class="project-content">
                     <h3>Pill Crusher Tool</h3>
                     <div class="project-meta">Mechanical Design • Fall 2025</div>
-                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly, parts list, and manufacturing specifications.</p>
+                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly.</p>
                     <div class="project-tags">
                         <span class="tag">CAD Design</span>
                         <span class="tag">Mechanical Engineering</span>
@@ -575,7 +575,7 @@
                 <div class="project-content">
                     <h3>Mousetrap Car Design</h3>
                     <div class="project-meta">Mechanical Engineering • EE4000 • 2024</div>
-                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction through precision manufacturing and material science analysis.</p>
+                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction.</p>
                     <div class="project-tags">
                         <span class="tag">Mechanical Analysis</span>
                         <span class="tag">Energy Optimization</span>
@@ -587,75 +587,46 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Computer Vision Project -->
-            <div class="project-card">
-                <div class="project-image"><img src="images/hand_skeleton.jpg" alt="Computer Vision" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-                <div class="project-content">
-                    <h3>Computer Vision Applications</h3>
-                    <div class="project-meta">Python • OpenCV • 2024-2025</div>
-                    <p class="project-description">Real-time image processing and object detection projects using OpenCV and Python. Applications include motion tracking, contour detection, and automated visual analysis systems.</p>
-                    <div class="project-tags">
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Python</span>
-                        <span class="tag">OpenCV</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#">View Code</a>
-                        <a href="#">GitHub</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FIRST Robotics -->
-            <div class="project-card">
-                <div class="project-image">🤖</div>
-                <div class="project-content">
-                    <h3>FIRST Robotics - Team 900</h3>
-                    <div class="project-meta">Robotics Competition • 2024-2025</div>
-                    <p class="project-description">Member of FRC Team 900, working on mechanical design and systems integration for competitive robotics. Collaboration on autonomous systems, mechanical subsystems, and competition strategy.</p>
-                    <div class="project-tags">
-                        <span class="tag">Robotics</span>
-                        <span class="tag">Team Collaboration</span>
-                        <span class="tag">Competition</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="#">Team Website</a>
-                        <a href="#">Competition Results</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
+    <!-- Project Photos Gallery -->
     <section class="container">
         <h2>Project Photos</h2>
         <div class="gallery-grid">
             <div class="gallery-card">
-                <img src="images/capture.jpg" alt="Safe Step Well" />
+                <img src="./images/capture.jpg" alt="Safe Step Well" />
                 <p>Safe Step Well prototype and interface mockup for the fall detection system.</p>
             </div>
             <div class="gallery-card">
-                <img src="images/hand_skeleton.jpg" alt="Computer Vision Skeleton" />
-                <p>Computer vision skeleton tracking output from OpenCV motion analysis.</p>
+                <img src="./images/hand_skeleton.jpg" alt="Advanced Processing" />
+                <p>Advanced image processing and skeleton tracking output demonstrations.</p>
             </div>
             <div class="gallery-card">
-                <img src="images/output.jpg" alt="Computer Vision Output" />
-                <p>Additional computer vision results showing object detection and processing.</p>
+                <img src="./images/output.jpg" alt="Project Output" />
+                <p>Project results and technical output from various engineering projects.</p>
             </div>
             <div class="gallery-card">
-                <img src="images/nsbe_windturbine.jpg" alt="NSBE Wind Turbine" />
-                <p>NSBE wind turbine project photo for student engineering demonstrations.</p>
+                <img src="./images/nsbe_windturbine.jpg" alt="NSBE Wind Turbine" />
+                <p>NSBE wind turbine project for sustainable engineering demonstrations.</p>
             </div>
         </div>
     </section>
-            <p class="experience-description">Contributed to mechanical design and systems integration for competitive robotics competition. Collaborated with cross-functional engineering teams.</p>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Experience & Leadership</h2>
+        
+        <div class="experience-item">
+            <h3>NSBE President</h3>
+            <div class="experience-meta">2024 - 2025 | National Society of Black Engineers</div>
+            <p class="experience-description">Leading chapter initiatives, organizing events, mentoring students, and building community within the engineering program. Coordinating competitive challenges and professional development opportunities.</p>
         </div>
 
         <div class="experience-item">
             <h3>Junior Researcher</h3>
             <div class="experience-meta">February 2024 - April 2025 | Fayetteville State University</div>
-            <p class="experience-description">Conducted research on materials science and structural stability. Co-authored published paper on MXenes. Analyzed and presented findings to academic community.</p>
+            <p class="experience-description">Conducted research on materials science and structural stability. Co-authored published paper on MXenes and advanced materials analysis.</p>
         </div>
 
         <div class="experience-item">
@@ -665,7 +636,7 @@
         </div>
 
         <h3 style="margin-top: 2rem;">Honors & Awards</h3>
-        <div class="experience-item" style="border-left: 4px solid var(--accent-color);">
+        <div class="experience-item" style="border-left: 4px solid var(--primary-color);">
             <ul style="margin-left: 1rem; color: var(--text-light);">
                 <li>🏆 Park Scholar (NC State University)</li>
                 <li>🏆 Stamps Scholar - Top 393 of 655,000 applicants</li>
