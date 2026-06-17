@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Kinney - Engineering Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #003366;
+            --accent-color: #00BCD4;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .hero .tagline {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #00A8BB;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 188, 212, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 2rem;
+            background-color: var(--white);
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        section h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-item {
+            background-color: var(--bg-light);
+            padding: 1rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .skill-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 51, 102, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            flex-grow: 1;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: auto;
+        }
+
+        .project-links a {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Experience Section */
+        .experience-item {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .experience-meta {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-description {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-link-icon {
+            font-size: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Gabriel Kinney</h1>
+        <p class="tagline">Mechanical & Electrical Engineer | Innovator | Problem Solver</p>
+        <p>Designing solutions at the intersection of engineering, innovation, and community impact</p>
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Engineering Excellence Through Innovation</h3>
+                <p>I'm a Park Scholar and Stamps Scholar studying Mechanical Engineering at North Carolina School of Science and Mathematics, with a passion for designing products that solve real-world problems.</p>
+                
+                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering challenges.</p>
+                
+                <p>Every project I tackle is driven by a commitment to accessibility, sustainability, and creating meaningful impact.</p>
+
+                <h3 style="color: var(--accent-color);">Core Competencies</h3>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <strong>Hardware Design</strong>
+                        <p>PCB design, embedded systems, CAD/3D modeling</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Firmware Development</strong>
+                        <p>C/C++, ARM Mbed, real-time algorithms</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Mechanical Engineering</strong>
+                        <p>Structural analysis, mechanical advantage, manufacturing</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Full-Stack Product</strong>
+                        <p>Hardware + software + go-to-market strategy</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Leadership</strong>
+                        <p>NSBE President, team coordination, mentoring</p>
+                    </div>
+                    <div class="skill-item">
+                        <strong>Research</strong>
+                        <p>Published materials science, data analysis, technical writing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <!-- Safe Step Well -->
+            <div class="project-card">
+                <div class="project-image">🛡️</div>
+                <div class="project-content">
+                    <h3>Safe Step Well</h3>
+                    <div class="project-meta">Fall Detection System • 2026</div>
+                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity and <4% false positive rate. Bluetooth alerts notify caregivers in <1 second.</p>
+                    <div class="project-tags">
+                        <span class="tag">Embedded Systems</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">BLE</span>
+                        <span class="tag">Healthcare Tech</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="safe-step-well.html">View Details</a>
+                        <a href="#">Documentation</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Polyphonic Piano -->
+            <div class="project-card">
+                <div class="project-image">🎹</div>
+                <div class="project-content">
+                    <h3>Polyphonic Piano & Sequencer</h3>
+                    <div class="project-meta">Electronics • EE 4020 • 2025</div>
+                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer for programmable melodies. 5+ hours of circuit troubleshooting and optimization.</p>
+                    <div class="project-tags">
+                        <span class="tag">Circuit Design</span>
+                        <span class="tag">Analog Electronics</span>
+                        <span class="tag">Prototyping</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="piano-sequencer.html">View Details</a>
+                        <a href="#">Schematics</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pill Crusher -->
+            <div class="project-card">
+                <div class="project-image">⚙️</div>
+                <div class="project-content">
+                    <h3>Pill Crusher Tool</h3>
+                    <div class="project-meta">Mechanical Design • Fall 2025</div>
+                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly, parts list, and manufacturing specifications.</p>
+                    <div class="project-tags">
+                        <span class="tag">CAD Design</span>
+                        <span class="tag">Mechanical Engineering</span>
+                        <span class="tag">Accessibility</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="pill-crusher.html">View Details</a>
+                        <a href="#">CAD Files</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mousetrap Car -->
+            <div class="project-card">
+                <div class="project-image">🏎️</div>
+                <div class="project-content">
+                    <h3>Mousetrap Car Design</h3>
+                    <div class="project-meta">Mechanical Engineering • EE4000 • 2024</div>
+                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction through precision manufacturing and material science analysis.</p>
+                    <div class="project-tags">
+                        <span class="tag">Mechanical Analysis</span>
+                        <span class="tag">Energy Optimization</span>
+                        <span class="tag">Testing & Validation</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="mousetrap-car.html">View Details</a>
+                        <a href="#">Research Paper</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Computer Vision Project -->
+            <div class="project-card">
+                <div class="project-image">👁️</div>
+                <div class="project-content">
+                    <h3>Computer Vision Applications</h3>
+                    <div class="project-meta">Python • OpenCV • 2024-2025</div>
+                    <p class="project-description">Real-time image processing and object detection projects using OpenCV and Python. Applications include motion tracking, contour detection, and automated visual analysis systems.</p>
+                    <div class="project-tags">
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">OpenCV</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">View Code</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FIRST Robotics -->
+            <div class="project-card">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <h3>FIRST Robotics - Team 900</h3>
+                    <div class="project-meta">Robotics Competition • 2024-2025</div>
+                    <p class="project-description">Member of FRC Team 900, working on mechanical design and systems integration for competitive robotics. Collaboration on autonomous systems, mechanical subsystems, and competition strategy.</p>
+                    <div class="project-tags">
+                        <span class="tag">Robotics</span>
+                        <span class="tag">Team Collaboration</span>
+                        <span class="tag">Competition</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#">Team Website</a>
+                        <a href="#">Competition Results</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="container">
+        <h2>Experience & Leadership</h2>
+        
+        <div class="experience-item">
+            <h3>President, National Society of Black Engineers (NSBE)</h3>
+            <div class="experience-meta">May 2025 - Present | NC State University</div>
+            <p class="experience-description">Leading organization with focus on recruitment, professional development, and community engagement. Organizing competitions, conferences, and mentorship programs.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Design & Fabrication Intern</h3>
+            <div class="experience-meta">July - August 2025 | NC State Mechanical & Aerospace Engineering</div>
+            <p class="experience-description">Worked on CAD design and fabrication projects. Gained hands-on experience with manufacturing processes and design optimization.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>FRC Team 900 Member</h3>
+            <div class="experience-meta">August 2024 - July 2025 | FIRST Robotics</div>
+            <p class="experience-description">Contributed to mechanical design and systems integration for competitive robotics competition. Collaborated with cross-functional engineering teams.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>Junior Researcher</h3>
+            <div class="experience-meta">February 2024 - April 2025 | Fayetteville State University</div>
+            <p class="experience-description">Conducted research on materials science and structural stability. Co-authored published paper on MXenes. Analyzed and presented findings to academic community.</p>
+        </div>
+
+        <div class="experience-item">
+            <h3>ANPA Research Scholar</h3>
+            <div class="experience-meta">May 2023 - April 2025 | Research Fellowship</div>
+            <p class="experience-description">Conducted advanced research projects focused on STEM education and materials innovation. Presented findings at conferences and published in academic journals.</p>
+        </div>
+
+        <h3 style="margin-top: 2rem;">Honors & Awards</h3>
+        <div class="experience-item" style="border-left: 4px solid var(--accent-color);">
+            <ul style="margin-left: 1rem; color: var(--text-light);">
+                <li>🏆 Park Scholar (NC State University)</li>
+                <li>🏆 Stamps Scholar - Top 393 of 655,000 applicants</li>
+                <li>🏆 Ron Brown Scholar & Captain</li>
+                <li>🥇 1st Place NSBE KIDWIND National Challenge</li>
+                <li>🥉 3rd Place NSBE KIDWIND National Challenge</li>
+                <li>🥈 2nd Place Massy Hill Classical Tournament</li>
+                <li>🥇 1st Place In Debate & Business Success</li>
+                <li>🥇 1st Place Bridge Resiliency Competition</li>
+                <li>📜 Published Research: "Structural Stability and Electronic Structure of (Ti,Ta)2C MXenes"</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div class="contact-content">
+            <p>I'm always interested in discussing new projects, opportunities, and ideas. Feel free to reach out!</p>
+            <div class="contact-links">
+                <a href="mailto:gkinney2008@gmail.com" class="contact-link">
+                    <div class="contact-link-icon">📧</div>
+                    <div>Email</div>
+                    <small>gkinney2008@gmail.com</small>
+                </a>
+                <a href="https://www.linkedin.com/in/gabrielkinney-129238256" target="_blank" class="contact-link">
+                    <div class="contact-link-icon">💼</div>
+                    <div>LinkedIn</div>
+                    <small>Profile</small>
+                </a>
+                <a href="https://github.com" target="_blank" class="contact-link">
+                    <div class="contact-link-icon">💻</div>
+                    <div>GitHub</div>
+                    <small>Repository</small>
+                </a>
+                <a href="tel:+1234567890" class="contact-link">
+                    <div class="contact-link-icon">📱</div>
+                    <div>Phone</div>
+                    <small>Available</small>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gabriel Kinney. All rights reserved.</p>
+        <p>Engineering Excellence | Innovation | Impact</p>
+    </footer>
+</body>
+</html>

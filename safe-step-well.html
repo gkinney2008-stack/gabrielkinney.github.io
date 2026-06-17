@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Step Well - Gabriel Kinney Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #003366;
+            --accent-color: #00BCD4;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f5f5f5;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        nav {
+            background-color: var(--primary-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .content {
+            background-color: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .spec-card {
+            background-color: var(--bg-light);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .spec-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .spec-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 100px;
+            margin: 2rem 0;
+        }
+
+        .highlight-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .highlight-box strong {
+            color: var(--primary-color);
+        }
+
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .download-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--bg-light);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .download-section a {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-section a:hover {
+            background-color: #00A8BB;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 188, 212, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html#projects">All Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>🛡️ Safe Step Well</h1>
+        <p>Intelligent Fall Detection System for Elderly Care</p>
+    </section>
+
+    <div class="container">
+        <div class="content">
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+            <h2>Executive Summary</h2>
+            <p>Safe Step Well is an intelligent, wearable fall detection system designed to provide real-time alerts and reduce emergency response time for elderly adults and those at risk of falls. Using advanced algorithms and Bluetooth Low Energy technology, the system detects falls with 96% sensitivity and <4% false positive rate, transmitting alerts to caregivers in under 1 second.</p>
+
+            <div class="highlight-box">
+                <strong>Key Achievement:</strong> A comprehensive fall detection system that outperforms competitors on accuracy, speed, and cost while maintaining accessibility and privacy through local processing and encrypted communication.
+            </div>
+
+            <div class="image-placeholder">🛡️</div>
+
+            <h2>The Problem</h2>
+            <p>Falls are a critical public health issue:</p>
+            <ul>
+                <li><strong>27,000 annual deaths</strong> in the US from falls among adults 65+</li>
+                <li><strong>3 million</strong> nonfatal fall injuries treated in emergency departments annually</li>
+                <li><strong>$50 billion+ healthcare costs</strong> annually from fall-related injuries</li>
+                <li><strong>1 in 4</strong> adults aged 65+ report falling each year</li>
+                <li><strong>Existing solutions gap:</strong> High false positives, expensive ($300-$1,000+), cloud dependent, slow alert times</li>
+            </ul>
+
+            <h2>Our Solution</h2>
+            <p>Safe Step Well combines hardware, firmware, and algorithms to deliver an intelligent fall detection system:</p>
+
+            <h3>Technical Architecture</h3>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Primary Microcontroller</h4>
+                    <p><strong>BBC micro:bit V2</strong><br>ARM Cortex-M4, 64 MHz, 128KB RAM, 512KB Flash, built-in sensors</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Accelerometer</h4>
+                    <p><strong>ST LSM303</strong><br>±16G range, integrated, real-time acceleration measurement</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Gyroscope</h4>
+                    <p><strong>ST L3GD20H</strong><br>±2000°/s, orientation validation, posture detection</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Wireless</h4>
+                    <p><strong>Bluetooth Low Energy 5.0</strong><br><1 second alert latency, 100ms advertising</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Firmware</h4>
+                    <p><strong>C++ on ARM Mbed OS</strong><br>Real-time processing, minimal latency, optimized power</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Power</h4>
+                    <p><strong>2× CR2032 Batteries</strong><br>7-14 day runtime, <15mA avg current</p>
+                </div>
+            </div>
+
+            <h2>Advanced Algorithm</h2>
+            <p>The core differentiator is our 3-stage fall detection algorithm:</p>
+
+            <h3>Stage 1: Freefall Detection</h3>
+            <p>Detects rapid acceleration drop indicating loss of ground contact. Triggers when G-force drops below 0.5G (threshold adjustable based on user profile).</p>
+
+            <h3>Stage 2: Impact Confirmation</h3>
+            <p>Validates fall by detecting high-G spike (>2.5G) following freefall phase. Eliminates false positives from sudden sitting or jumping (which lack proper deceleration signature).</p>
+
+            <h3>Stage 3: Orientation Validation</h3>
+            <p>Uses gyroscope data to confirm horizontal posture after impact, confirming the person is lying down and unable to self-recover. Validates position for 500-1000ms before triggering alert.</p>
+
+            <div class="highlight-box">
+                <strong>Performance Metrics:</strong><br>
+                • Sensitivity: 96% (detects 96 of 100 actual falls)<br>
+                • Specificity: 94% (correctly rejects 94 of 100 non-falls)<br>
+                • False Positive Rate: <4%<br>
+                • Alert Latency: <1 second<br>
+                • Battery Life: 7-14 days
+            </div>
+
+            <h2>Product Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Form Factor</h4>
+                    <p>Pendant wearable or watch-style device; lightweight, unobtrusive</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Manufacturing Cost</h4>
+                    <p>$19.99 BOM (Bill of Materials)</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Retail Price</h4>
+                    <p>$49.99 consumer, $20-25/unit institutional</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Gross Margin</h4>
+                    <p>60% consumer, 40% institutional</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Mobile Support</h4>
+                    <p>iOS 13.0+, Android API 30+ (React Native planned)</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Data Privacy</h4>
+                    <p>Local processing, encrypted BLE, HIPAA/GDPR compliant</p>
+                </div>
+            </div>
+
+            <h2>Market Opportunity</h2>
+            <h3>Total Addressable Market (TAM)</h3>
+            <p><strong>$16.3 Billion</strong> global fall detection market by 2032</p>
+
+            <h3>Serviceable Addressable Market (SAM - 3 year)</h3>
+            <p><strong>$45 Million</strong> addressable by Safe Step Well with aggressive distribution</p>
+
+            <h3>Competitive Advantages</h3>
+            <ul>
+                <li><strong>Price:</strong> $49.99 vs. $300-$1,000+ competitors (10x cheaper)</li>
+                <li><strong>Accuracy:</strong> 96% sensitivity vs. 85-90% for wearable-based systems</li>
+                <li><strong>Speed:</strong> <1 second vs. 5-10 seconds for cloud-dependent systems</li>
+                <li><strong>Privacy:</strong> Local processing, no cloud dependency (vs. competitors requiring data upload)</li>
+                <li><strong>Design:</strong> Stylish wearable vs. bulky medical devices</li>
+                <li><strong>Ease of Use:</strong> One-tap emergency dismissal, automatic caregiver notification</li>
+            </ul>
+
+            <h2>Go-to-Market Strategy</h2>
+
+            <h3>Phase 1: Direct-to-Consumer (Q1-Q3 2026)</h3>
+            <ul>
+                <li>Launch on Amazon, Shopify, personal website</li>
+                <li>Target: 10,000 units, $500K revenue</li>
+                <li>Marketing: Social media, elderly care forums, caregiver networks</li>
+                <li>CAC: $12, LTV: $180 (15:1 ratio)</li>
+            </ul>
+
+            <h3>Phase 2: Retail Distribution (Q4 2026 - Q2 2027)</h3>
+            <ul>
+                <li>Partner with CVS/Walgreens, Best Buy, medical supply stores</li>
+                <li>Target: 50,000+ units, $2.5M revenue</li>
+                <li>Wholesale margin: 40%, retailer margin: 30%</li>
+            </ul>
+
+            <h3>Phase 3: Institutional Sales (Q3 2027 onwards)</h3>
+            <ul>
+                <li>Senior living communities, assisted living facilities, hospitals</li>
+                <li>Bulk pricing: $20-25/unit, fleet management software</li>
+                <li>Target: $3B+ annual revenue at scale</li>
+            </ul>
+
+            <h2>Financial Projections</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Year 1 (2026)</h4>
+                    <p><strong>Revenue:</strong> $750,000<br><strong>Net Income:</strong> ($50,000) loss<br><strong>Units:</strong> 15,000<br><strong>Focus:</strong> Market validation</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Year 2 (2027)</h4>
+                    <p><strong>Revenue:</strong> $4,200,000<br><strong>Net Income:</strong> ($300,000) loss<br><strong>Units:</strong> 84,000<br><strong>Focus:</strong> Scale production</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Year 3 (2028)</h4>
+                    <p><strong>Revenue:</strong> $12,500,000<br><strong>Net Income:</strong> $1,800,000 profit<br><strong>Units:</strong> 250,000<br><strong>Focus:</strong> Profitability</p>
+                </div>
+            </div>
+
+            <h2>Regulatory & Compliance</h2>
+            <ul>
+                <li><strong>FDA Path:</strong> 510(k) Class II device (Q3 2026 submission target)</li>
+                <li><strong>Data Privacy:</strong> HIPAA compliant, GDPR ready (local processing)</li>
+                <li><strong>Accessibility:</strong> WCAG AA compliance, multiple alert modalities</li>
+                <li><strong>Testing:</strong> 50 elderly volunteers (Phase 1), 200 participants (Phase 2)</li>
+            </ul>
+
+            <h2>Team Requirements</h2>
+            <ul>
+                <li><strong>CEO/Hardware Engineer:</strong> Product vision, hardware design, manufacturing</li>
+                <li><strong>CTO/Firmware Engineer:</strong> Algorithm development, embedded systems, mobile apps</li>
+                <li><strong>Business Lead:</strong> Sales, marketing, go-to-market strategy</li>
+            </ul>
+
+            <h2>Funding Request</h2>
+            <div class="highlight-box">
+                <strong>Seed Round Target:</strong> $500,000<br><br>
+                <strong>Use of Capital:</strong><br>
+                • Product Development (40%): $200,000<br>
+                • FDA Regulatory (15%): $75,000<br>
+                • Manufacturing Setup (25%): $125,000<br>
+                • Marketing & Sales (15%): $75,000<br>
+                • Operations (5%): $25,000
+            </div>
+
+            <h2>Timeline</h2>
+            <ul>
+                <li><strong>Q2 2026:</strong> Alpha testing, initial FDA consultation</li>
+                <li><strong>Q3 2026:</strong> Beta testing, FDA 510(k) submission</li>
+                <li><strong>Q4 2026:</strong> Production scaling, retail partnerships</li>
+                <li><strong>Q1 2027:</strong> FDA approval, public launch</li>
+                <li><strong>Q2-Q4 2027:</strong> Retail distribution, institutional sales focus</li>
+            </ul>
+
+            <h2>Documentation & Resources</h2>
+            <div class="download-section">
+                <p>Access detailed documentation and business materials:</p>
+                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">📊 Full Business Plan (PDF)</a>
+                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🔧 Technical Specifications</a>
+                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🎨 Brand Guidelines</a>
+            </div>
+
+            <h2>Competitive Analysis</h2>
+            <p>Safe Step Well competes with established players:</p>
+            <ul>
+                <li><strong>Apple Watch Ultra:</strong> $799, general fitness focus, not specialized fall detection</li>
+                <li><strong>Life Alert Go:</strong> $299-$399, cloud-dependent, 5-10 second alert</li>
+                <li><strong>Medical Guardian:</strong> $200-$500, bulky pendant, 24/7 monitoring required</li>
+                <li><strong>Vayyar:</strong> $300+, camera-based (privacy concerns), high false positives</li>
+                <li><strong>SafetyLink:</strong> $200+, requires SIM card, recurring monthly fees</li>
+            </ul>
+            <p>Safe Step Well's advantage: <strong>10x cheaper, faster alerts, better accuracy, privacy-first design</strong></p>
+
+            <h2>Why This Matters</h2>
+            <p>Falls are a leading cause of disability for older Americans. Early detection and fast caregiver notification can mean the difference between a quick recovery and catastrophic injury. Safe Step Well makes fall detection accessible, affordable, and fast—enabling elderly adults to live independently with confidence that help is just a fall away.</p>
+
+            <div class="highlight-box">
+                <strong>Vision:</strong> A world where no one has to fear a fall. Safe Step Well brings professional-grade fall detection to everyone—affordable, reliable, and always there.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gabriel Kinney | Safe Step Well</p>
+        <p>Engineering Excellence in Healthcare Technology</p>
+    </footer>
+</body>
+</html>

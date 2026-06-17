@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyphonic Piano & Sequencer - Gabriel Kinney Portfolio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-color: #003366; --accent-color: #00BCD4; --text-dark: #333333; --text-light: #666666; --bg-light: #f5f5f5; --white: #ffffff; --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--bg-light); }
+        nav { background-color: var(--primary-color); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+        nav a { color: var(--white); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        nav a:hover { color: var(--accent-color); }
+        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
+        .content { background-color: var(--white); padding: 3rem 2rem; border-radius: 8px; margin: 2rem 0; }
+        h2 { color: var(--primary-color); font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.5rem; }
+        h3 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+        .spec-card { background-color: var(--bg-light); padding: 1.5rem; border-radius: 6px; border-left: 4px solid var(--accent-color); }
+        .spec-card h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--primary-color); text-decoration: none; font-weight: 600; }
+        footer { background-color: var(--primary-color); color: var(--white); text-align: center; padding: 2rem; margin-top: 4rem; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+        li { margin-bottom: 0.5rem; color: var(--text-light); }
+        .highlight-box { background-color: #e3f2fd; border-left: 4px solid var(--accent-color); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html#projects">All Projects</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>🎹 Polyphonic Piano & Sequencer</h1>
+        <p>Electronics Project | EE 4020 | Spring 2025</p>
+    </section>
+
+    <div class="container">
+        <div class="content">
+            <a href="index.html" class="back-link">← Back to Portfolio</a>
+
+            <h2>Project Overview</h2>
+            <p>Designed and built a fully functional 6-note polyphonic synthesizer from discrete analog components. The system combines 556 timer ICs for note generation, LM741 summing amplifier for audio mixing, and LM386 audio amplifier for speaker output. Implemented a 4017 counter for sequencer functionality with programmable melody playback.</p>
+
+            <div class="highlight-box">
+                <strong>Key Achievement:</strong> Demonstrated advanced understanding of analog electronics, circuit troubleshooting, and audio signal processing. Successfully debugged complex multi-stage circuit through 5+ hours of systematic testing.
+            </div>
+
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Tone Oscillators</h4>
+                    <p>Six 556 timer ICs generating individual note frequencies via voltage dividers</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Audio Mixing</h4>
+                    <p>LM741 op-amp summing amplifier combining all note signals</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Audio Output</h4>
+                    <p>LM386 audio amplifier, speaker driver, volume control</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Sequencer</h4>
+                    <p>4017 decade counter for tempo control, programmable sequences</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Tempo Control</h4>
+                    <p>555 timer-based clock generator with variable frequency</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Power Supply</h4>
+                    <p>±12V dual supply, decoupling capacitors for stability</p>
+                </div>
+            </div>
+
+            <h2>Key Features</h2>
+            <ul>
+                <li><strong>Polyphonic Synthesis:</strong> Play up to 6 notes simultaneously</li>
+                <li><strong>Programmable Sequencer:</strong> Create and play pre-programmed melodies</li>
+                <li><strong>Variable Tempo:</strong> Adjust playback speed via 555 timer frequency</li>
+                <li><strong>Volume Control:</strong> Adjustable output level</li>
+                <li><strong>Full Discrete Analog Design:</strong> No microcontrollers or digital components</li>
+            </ul>
+
+            <h2>Circuit Architecture</h2>
+            <h3>Stage 1: Oscillator Bank (556 Timers)</h3>
+            <p>Each tone oscillator uses a 556 timer IC in astable mode. Frequency selection achieved through digital logic gates controlling which capacitor/resistor pairs are active. This enables selection of musical notes (C, D, E, F, G, A).</p>
+
+            <h3>Stage 2: Summing Amplifier (LM741)</h3>
+            <p>All six oscillator outputs feed into an inverting summing amplifier. The LM741 combines signals while maintaining individual amplitude control. Output impedance matched to prevent signal loading.</p>
+
+            <h3>Stage 3: Output Amplifier (LM386)</h3>
+            <p>Audio signal from summing amplifier feeds into LM386 power amplifier for driving speaker. Includes volume control potentiometer and feedback network for stability.</p>
+
+            <h3>Stage 4: Sequencer (4017 Counter)</h3>
+            <p>4017 decade counter driven by 555 timer clock. Each output selects a different note or rest. Creates repeating sequences up to 10 steps long.</p>
+
+            <h2>Design Challenges & Solutions</h2>
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <h4>Challenge: Signal Distortion</h4>
+                    <p><strong>Solution:</strong> Added summing resistors to prevent loading, optimized impedance matching between stages</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Challenge: Frequency Drift</h4>
+                    <p><strong>Solution:</strong> Used precision resistors, added temperature compensation, used regulated power supply</p>
+                </div>
+                <div class="spec-card">
+                    <h4>Challenge: Oscillation in Amplifiers</h4>
+                    <p><strong>Solution:</strong> Added compensation capacitors, optimized layout to reduce feedback paths</p>
+                </div>
+            </div>
+
+            <h2>Testing & Validation</h2>
+            <ul>
+                <li>Frequency accuracy testing: Each oscillator verified against standard tuning</li>
+                <li>Polyphony testing: Simultaneous note combinations measured for clarity</li>
+                <li>Sequencer timing: Clock frequency and counter accuracy verified</li>
+                <li>Audio quality: Harmonic distortion analysis and listening tests</li>
+                <li>Long-term stability: 2+ hour continuous operation testing</li>
+            </ul>
+
+            <h2>Learning Outcomes</h2>
+            <ul>
+                <li>Mastery of analog op-amp circuits and timing circuits</li>
+                <li>Understanding of audio signal path design and mixing</li>
+                <li>Troubleshooting methodology for complex multi-stage systems</li>
+                <li>Component selection and impedance matching principles</li>
+                <li>Audio frequency generation and modulation techniques</li>
+            </ul>
+
+            <h2>Applications & Future Work</h2>
+            <p><strong>Current Uses:</strong> Educational demonstration, embedded music generation, sound effects synthesis</p>
+            <p><strong>Future Enhancements:</strong></p>
+            <ul>
+                <li>Add MIDI interface for external sequencer control</li>
+                <li>Implement multiple waveforms (sine, square, triangle)</li>
+                <li>Add envelope generator (ADSR) for dynamic sound shaping</li>
+                <li>Expand to 16-note polyphony with more complex summing network</li>
+                <li>Add filter section for subtractive synthesis effects</li>
+            </ul>
+
+            <h2>Skills Demonstrated</h2>
+            <ul>
+                <li>Analog circuit design and analysis</li>
+                <li>Op-amp applications (summing, buffering, amplification)</li>
+                <li>Timing circuits and frequency generation</li>
+                <li>Digital logic integration with analog circuits</li>
+                <li>Troubleshooting and debugging complex systems</li>
+                <li>Audio signal processing</li>
+                <li>PCB layout and component placement</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Gabriel Kinney | Polyphonic Piano & Sequencer</p>
+    </footer>
+</body>
+</html>
