@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gabriel Kinney - Engineering Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,12 +12,13 @@
         }
 
         :root {
-            --black: #000000;
+            --primary-color: #003366;
+            --accent-color: #00BCD4;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f5f5f5;
             --white: #ffffff;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #4a4a4a;
-            --light-gray: #f5f5f5;
-            --border-gray: #e0e0e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         html {
@@ -26,232 +26,249 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: var(--black);
-            background-color: var(--white);
-            font-weight: 400;
-            letter-spacing: 0.3px;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
         }
 
         /* Navigation */
         nav {
-            background-color: var(--white);
-            padding: 1.5rem 0;
+            background-color: var(--primary-color);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid var(--border-gray);
+            box-shadow: var(--shadow);
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
         }
 
         nav a {
-            color: var(--black);
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.95rem;
             transition: color 0.3s ease;
-            letter-spacing: 0.5px;
         }
 
         nav a:hover {
-            color: var(--medium-gray);
+            color: var(--accent-color);
         }
 
         /* Hero Section */
         .hero {
-            background-color: var(--white);
-            color: var(--black);
-            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
             text-align: center;
-            border-bottom: 1px solid var(--border-gray);
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--medium-gray);
-            font-weight: 400;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
         .hero .tagline {
-            color: var(--black);
+            color: var(--accent-color);
             font-weight: 600;
-            margin-bottom: 2.5rem;
-            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
         }
 
         .cta-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 0.75rem 2rem;
+            padding: 0.8rem 2rem;
             border: none;
-            border-radius: 0;
-            font-size: 0.95rem;
+            border-radius: 4px;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 600;
             display: inline-block;
-            letter-spacing: 0.5px;
         }
 
         .btn-primary {
-            background-color: var(--black);
-            color: var(--white);
-            border: 1px solid var(--black);
+            background-color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         .btn-primary:hover {
-            background-color: var(--white);
-            color: var(--black);
+            background-color: #00A8BB;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 188, 212, 0.3);
         }
 
         .btn-secondary {
-            background-color: var(--white);
-            color: var(--black);
-            border: 1px solid var(--black);
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
         }
 
         .btn-secondary:hover {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--white);
+            color: var(--primary-color);
         }
 
         /* Container */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         /* Section Styles */
         section {
-            padding: 5rem 2rem;
+            padding: 4rem 2rem;
             background-color: var(--white);
-            border-bottom: 1px solid var(--border-gray);
+            margin: 2rem 0;
+            border-radius: 8px;
         }
 
         section h2 {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 2.5rem;
-            color: var(--black);
-            margin-bottom: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
             text-align: center;
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         section h3 {
-            color: var(--black);
+            color: var(--primary-color);
             margin-top: 1.5rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
+            font-size: 1.5rem;
         }
 
         /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
+            gap: 2rem;
+            align-items: center;
         }
 
         .about-text h3 {
-            color: var(--black);
-            font-size: 1.25rem;
+            color: var(--accent-color);
+            font-size: 1.3rem;
             margin-top: 0;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.8;
-            color: var(--medium-gray);
-            font-size: 0.95rem;
+            color: var(--text-light);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
 
         .skill-item {
-            background-color: var(--white);
-            padding: 1.25rem;
-            border-left: 2px solid var(--black);
-            border-radius: 0;
+            background-color: var(--bg-light);
+            padding: 1rem;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
         }
 
         .skill-item strong {
-            color: var(--black);
-            font-weight: 600;
-        }
-
-        .skill-item p {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
+            color: var(--primary-color);
         }
 
         /* Projects Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .project-card {
             background-color: var(--white);
-            border: 1px solid var(--border-gray);
-            border-radius: 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             overflow: hidden;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
             display: flex;
             flex-direction: column;
         }
 
         .project-card:hover {
-            border-color: var(--black);
-            box-shadow: none;
+            transform: translateY(-8px);
+            box-shadow: 0 8px 16px rgba(0, 51, 102, 0.15);
+            border-color: var(--accent-color);
         }
 
         .project-image {
             width: 100%;
-            height: 180px;
-            background-color: var(--light-gray);
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--black);
+            color: var(--white);
             font-size: 3rem;
-            border-bottom: 1px solid var(--border-gray);
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background-color: var(--white);
+            border: 1px solid #e0e0e0;
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-card p {
+            padding: 1rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
         }
 
         .project-content {
@@ -263,25 +280,20 @@
 
         .project-content h3 {
             margin-top: 0;
-            color: var(--black);
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
-            font-size: 1.15rem;
-            font-weight: 600;
         }
 
         .project-meta {
-            font-size: 0.85rem;
-            color: var(--medium-gray);
+            font-size: 0.9rem;
+            color: var(--text-light);
             margin-bottom: 1rem;
-            letter-spacing: 0.3px;
         }
 
         .project-description {
             flex-grow: 1;
-            color: var(--medium-gray);
+            color: var(--text-light);
             margin-bottom: 1rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
         }
 
         .project-tags {
@@ -292,76 +304,58 @@
         }
 
         .tag {
-            background-color: var(--light-gray);
-            color: var(--black);
-            padding: 0.35rem 0.75rem;
-            border-radius: 0;
-            font-size: 0.75rem;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 600;
-            border: 1px solid var(--border-gray);
-            letter-spacing: 0.3px;
         }
 
         .project-links {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.5rem;
             margin-top: auto;
         }
 
         .project-links a {
             flex: 1;
-            padding: 0.6rem 1rem;
-            background-color: var(--white);
-            color: var(--black);
+            padding: 0.5rem 1rem;
+            background-color: var(--primary-color);
+            color: var(--white);
             text-decoration: none;
-            border: 1px solid var(--black);
+            border-radius: 4px;
             text-align: center;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
         }
 
         .project-links a:hover {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--accent-color);
+            color: var(--primary-color);
         }
 
         /* Experience Section */
         .experience-item {
-            border-left: 2px solid var(--black);
+            border-left: 4px solid var(--accent-color);
             padding-left: 1.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .experience-item h3 {
             margin-top: 0;
-            color: var(--black);
-            font-size: 1.15rem;
-            font-weight: 600;
+            color: var(--primary-color);
         }
 
         .experience-meta {
-            color: var(--medium-gray);
-            font-size: 0.9rem;
-            margin-bottom: 0.75rem;
-            letter-spacing: 0.3px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
         }
 
         .experience-description {
-            color: var(--medium-gray);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .experience-item ul {
-            margin-left: 1rem;
-            color: var(--medium-gray);
-            font-size: 0.95rem;
-        }
-
-        .experience-item li {
-            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
         }
 
         /* Contact Section */
@@ -371,16 +365,10 @@
             margin: 0 auto;
         }
 
-        .contact-content p {
-            color: var(--medium-gray);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-
         .contact-links {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
+            gap: 2rem;
             margin-top: 2rem;
             flex-wrap: wrap;
         }
@@ -391,54 +379,39 @@
             align-items: center;
             gap: 0.5rem;
             text-decoration: none;
-            color: var(--black);
+            color: var(--primary-color);
             transition: color 0.3s ease;
         }
 
         .contact-link:hover {
-            color: var(--medium-gray);
+            color: var(--accent-color);
         }
 
         .contact-link-icon {
-            font-size: 1.75rem;
-        }
-
-        .contact-link small {
-            color: var(--medium-gray);
-            font-size: 0.85rem;
+            font-size: 2rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--white);
-            color: var(--black);
+            background-color: var(--primary-color);
+            color: var(--white);
             text-align: center;
-            padding: 2.5rem;
-            border-top: 1px solid var(--border-gray);
-        }
-
-        footer p {
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
-        }
-
-        footer p:first-child {
-            margin-bottom: 0.5rem;
+            padding: 2rem;
+            margin-top: 4rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             nav ul {
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
-                gap: 2rem;
             }
 
             .projects-grid {
@@ -446,15 +419,11 @@
             }
 
             .contact-links {
-                gap: 1.5rem;
+                gap: 1rem;
             }
 
             section {
-                padding: 3rem 1rem;
-            }
-
-            .hero {
-                padding: 4rem 2rem;
+                padding: 2rem 1rem;
             }
         }
 
@@ -503,12 +472,11 @@
                 <h3>Engineering Excellence Through Innovation</h3>
                 <p>I'm a Park Scholar and Stamps Scholar studying Mechanical Engineering at North Carolina School of Science and Mathematics, with a passion for designing products that solve real-world problems.</p>
                 
-                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering competitions.</p>
+                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering challenges.</p>
                 
                 <p>Every project I tackle is driven by a commitment to accessibility, sustainability, and creating meaningful impact.</p>
-            </div>
-            <div class="about-text">
-                <h3>Core Competencies</h3>
+
+                <h3 style="color: var(--accent-color);">Core Competencies</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
                         <strong>Hardware Design</strong>
@@ -545,11 +513,11 @@
         <div class="projects-grid">
             <!-- Safe Step Well -->
             <div class="project-card">
-                <div class="project-image">🛡️</div>
+                <div class="project-image"><img src="images/capture.jpg" alt="Safe Step Well" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
                 <div class="project-content">
                     <h3>Safe Step Well</h3>
                     <div class="project-meta">Fall Detection System • 2026</div>
-                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity.</p>
+                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity and <4% false positive rate. Bluetooth alerts notify caregivers in <1 second.</p>
                     <div class="project-tags">
                         <span class="tag">Embedded Systems</span>
                         <span class="tag">C++</span>
@@ -569,7 +537,7 @@
                 <div class="project-content">
                     <h3>Polyphonic Piano & Sequencer</h3>
                     <div class="project-meta">Electronics • EE 4020 • 2025</div>
-                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer.</p>
+                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer for programmable melodies. 5+ hours of circuit troubleshooting and optimization.</p>
                     <div class="project-tags">
                         <span class="tag">Circuit Design</span>
                         <span class="tag">Analog Electronics</span>
@@ -588,7 +556,7 @@
                 <div class="project-content">
                     <h3>Pill Crusher Tool</h3>
                     <div class="project-meta">Mechanical Design • Fall 2025</div>
-                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use.</p>
+                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly, parts list, and manufacturing specifications.</p>
                     <div class="project-tags">
                         <span class="tag">CAD Design</span>
                         <span class="tag">Mechanical Engineering</span>
@@ -607,7 +575,7 @@
                 <div class="project-content">
                     <h3>Mousetrap Car Design</h3>
                     <div class="project-meta">Mechanical Engineering • EE4000 • 2024</div>
-                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size and lever arm length.</p>
+                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction through precision manufacturing and material science analysis.</p>
                     <div class="project-tags">
                         <span class="tag">Mechanical Analysis</span>
                         <span class="tag">Energy Optimization</span>
@@ -622,11 +590,11 @@
 
             <!-- Computer Vision Project -->
             <div class="project-card">
-                <div class="project-image">👁️</div>
+                <div class="project-image"><img src="images/hand_skeleton.jpg" alt="Computer Vision" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
                 <div class="project-content">
                     <h3>Computer Vision Applications</h3>
                     <div class="project-meta">Python • OpenCV • 2024-2025</div>
-                    <p class="project-description">Real-time image processing and object detection projects using OpenCV and Python. Applications include motion tracking and contour detection.</p>
+                    <p class="project-description">Real-time image processing and object detection projects using OpenCV and Python. Applications include motion tracking, contour detection, and automated visual analysis systems.</p>
                     <div class="project-tags">
                         <span class="tag">Computer Vision</span>
                         <span class="tag">Python</span>
@@ -645,7 +613,7 @@
                 <div class="project-content">
                     <h3>FIRST Robotics - Team 900</h3>
                     <div class="project-meta">Robotics Competition • 2024-2025</div>
-                    <p class="project-description">Member of FRC Team 900, working on mechanical design and systems integration for competitive robotics and autonomous systems.</p>
+                    <p class="project-description">Member of FRC Team 900, working on mechanical design and systems integration for competitive robotics. Collaboration on autonomous systems, mechanical subsystems, and competition strategy.</p>
                     <div class="project-tags">
                         <span class="tag">Robotics</span>
                         <span class="tag">Team Collaboration</span>
@@ -660,25 +628,27 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="container">
-        <h2>Experience & Leadership</h2>
-        
-        <div class="experience-item">
-            <h3>President, National Society of Black Engineers (NSBE)</h3>
-            <div class="experience-meta">May 2025 - Present | NC State University</div>
-            <p class="experience-description">Leading organization with focus on recruitment, professional development, and community engagement. Organizing competitions, conferences, and mentorship programs.</p>
+    <section class="container">
+        <h2>Project Photos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="images/capture.jpg" alt="Safe Step Well" />
+                <p>Safe Step Well prototype and interface mockup for the fall detection system.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="images/hand_skeleton.jpg" alt="Computer Vision Skeleton" />
+                <p>Computer vision skeleton tracking output from OpenCV motion analysis.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="images/output.jpg" alt="Computer Vision Output" />
+                <p>Additional computer vision results showing object detection and processing.</p>
+            </div>
+            <div class="gallery-card">
+                <img src="images/nsbe_windturbine.jpg" alt="NSBE Wind Turbine" />
+                <p>NSBE wind turbine project photo for student engineering demonstrations.</p>
+            </div>
         </div>
-
-        <div class="experience-item">
-            <h3>Design & Fabrication Intern</h3>
-            <div class="experience-meta">July - August 2025 | NC State Mechanical & Aerospace Engineering</div>
-            <p class="experience-description">Worked on CAD design and fabrication projects. Gained hands-on experience with manufacturing processes and design optimization.</p>
-        </div>
-
-        <div class="experience-item">
-            <h3>FRC Team 900 Member</h3>
-            <div class="experience-meta">August 2024 - July 2025 | FIRST Robotics</div>
+    </section>
             <p class="experience-description">Contributed to mechanical design and systems integration for competitive robotics competition. Collaborated with cross-functional engineering teams.</p>
         </div>
 
@@ -694,9 +664,9 @@
             <p class="experience-description">Conducted advanced research projects focused on STEM education and materials innovation. Presented findings at conferences and published in academic journals.</p>
         </div>
 
-        <h3 style="margin-top: 2.5rem;">Honors & Awards</h3>
-        <div class="experience-item">
-            <ul>
+        <h3 style="margin-top: 2rem;">Honors & Awards</h3>
+        <div class="experience-item" style="border-left: 4px solid var(--accent-color);">
+            <ul style="margin-left: 1rem; color: var(--text-light);">
                 <li>🏆 Park Scholar (NC State University)</li>
                 <li>🏆 Stamps Scholar - Top 393 of 655,000 applicants</li>
                 <li>🏆 Ron Brown Scholar & Captain</li>
