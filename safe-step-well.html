@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Safe Step Well - Gabriel Kinney Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,13 +13,12 @@
         }
 
         :root {
-            --primary-color: #003366;
-            --accent-color: #00BCD4;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #f5f5f5;
+            --black: #000000;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --dark-gray: #1a1a1a;
+            --medium-gray: #4a4a4a;
+            --light-gray: #f5f5f5;
+            --border-gray: #e0e0e0;
         }
 
         html {
@@ -26,19 +26,21 @@
         }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            color: var(--black);
+            background-color: var(--white);
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
         nav {
-            background-color: var(--primary-color);
-            padding: 1rem 0;
+            background-color: var(--white);
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-gray);
         }
 
         nav ul {
@@ -49,174 +51,206 @@
             flex-wrap: wrap;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 2rem;
         }
 
         nav a {
-            color: var(--white);
+            color: var(--black);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
         nav a:hover {
-            color: var(--accent-color);
+            color: var(--medium-gray);
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            color: var(--black);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            font-size: 0.95rem;
         }
 
         .back-link:hover {
-            color: var(--accent-color);
+            color: var(--medium-gray);
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%);
-            color: var(--white);
-            padding: 4rem 2rem;
+            background-color: var(--white);
+            color: var(--black);
+            padding: 5rem 2rem;
             text-align: center;
+            border-bottom: 1px solid var(--border-gray);
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
+            letter-spacing: -1px;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
+            font-size: 1.1rem;
+            color: var(--medium-gray);
+            font-weight: 400;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         .content {
             background-color: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            margin: 2rem 0;
+            padding: 3rem 0;
         }
 
         h2 {
-            color: var(--primary-color);
-            font-family: 'Montserrat', sans-serif;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 0.5rem;
+            color: var(--black);
+            font-family: 'Inter', sans-serif;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border-gray);
+            padding-bottom: 0.75rem;
+            letter-spacing: -0.5px;
         }
 
         h3 {
-            color: var(--primary-color);
+            color: var(--black);
             margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        h4 {
+            color: var(--black);
             margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--medium-gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
         }
 
         .specs-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 1.5rem;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
         }
 
         .spec-card {
-            background-color: var(--bg-light);
+            background-color: var(--light-gray);
             padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid var(--accent-color);
-        }
-
-        .spec-card h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            border-radius: 0;
+            border-left: 2px solid var(--black);
         }
 
         .spec-card p {
-            color: var(--text-light);
             font-size: 0.95rem;
+            margin: 0;
         }
 
         .image-placeholder {
             width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 8px;
+            height: 350px;
+            background-color: var(--light-gray);
+            border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 100px;
+            color: var(--black);
+            font-size: 80px;
             margin: 2rem 0;
+            border: 1px solid var(--border-gray);
         }
 
         .highlight-box {
-            background-color: #e3f2fd;
-            border-left: 4px solid var(--accent-color);
+            background-color: var(--light-gray);
+            border-left: 2px solid var(--black);
             padding: 1.5rem;
             margin: 1.5rem 0;
-            border-radius: 4px;
+            border-radius: 0;
         }
 
         .highlight-box strong {
-            color: var(--primary-color);
+            color: var(--black);
+            font-weight: 600;
         }
 
         ul, ol {
             margin-left: 1.5rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         li {
-            margin-bottom: 0.5rem;
-            color: var(--text-light);
+            margin-bottom: 0.75rem;
+            color: var(--medium-gray);
             line-height: 1.8;
         }
 
+        li strong {
+            color: var(--black);
+            font-weight: 600;
+        }
+
         footer {
-            background-color: var(--primary-color);
-            color: var(--white);
+            background-color: var(--white);
+            color: var(--black);
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             margin-top: 4rem;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            margin: 0.25rem 0;
         }
 
         .download-section {
             margin: 2rem 0;
             padding: 2rem;
-            background-color: var(--bg-light);
-            border-radius: 8px;
+            background-color: var(--light-gray);
+            border-radius: 0;
             text-align: center;
+            border: 1px solid var(--border-gray);
         }
 
         .download-section a {
             display: inline-block;
-            margin: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background-color: var(--accent-color);
-            color: var(--primary-color);
+            margin: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--white);
+            color: var(--black);
             text-decoration: none;
-            border-radius: 4px;
+            border: 1px solid var(--black);
             font-weight: 600;
             transition: all 0.3s ease;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
         }
 
         .download-section a:hover {
-            background-color: #00A8BB;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 188, 212, 0.3);
+            background-color: var(--black);
+            color: var(--white);
         }
 
         @media (max-width: 768px) {
@@ -229,11 +263,15 @@
             }
 
             .content {
-                padding: 1.5rem;
+                padding: 1.5rem 0;
             }
 
             nav ul {
                 gap: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -257,7 +295,7 @@
             <a href="index.html" class="back-link">← Back to Portfolio</a>
 
             <h2>Executive Summary</h2>
-            <p>Safe Step Well is an intelligent, wearable fall detection system designed to provide real-time alerts and reduce emergency response time for elderly adults and those at risk of falls. Using advanced algorithms and Bluetooth Low Energy technology, the system detects falls with 96% sensitivity and <4% false positive rate, transmitting alerts to caregivers in under 1 second.</p>
+            <p>Safe Step Well is an intelligent, wearable fall detection system designed to provide real-time alerts and reduce emergency response time for elderly adults and those at risk of falls. By combining advanced sensor fusion, machine learning algorithms, and privacy-first design, Safe Step Well delivers professional-grade fall detection at a fraction of the cost of existing solutions.</p>
 
             <div class="highlight-box">
                 <strong>Key Achievement:</strong> A comprehensive fall detection system that outperforms competitors on accuracy, speed, and cost while maintaining accessibility and privacy through local processing and encrypted communication.
@@ -294,7 +332,7 @@
                 </div>
                 <div class="spec-card">
                     <h4>Wireless</h4>
-                    <p><strong>Bluetooth Low Energy 5.0</strong><br><1 second alert latency, 100ms advertising</p>
+                    <p><strong>Bluetooth Low Energy 5.0</strong><br>&lt;1 second alert latency, 100ms advertising</p>
                 </div>
                 <div class="spec-card">
                     <h4>Firmware</h4>
@@ -302,7 +340,7 @@
                 </div>
                 <div class="spec-card">
                     <h4>Power</h4>
-                    <p><strong>2× CR2032 Batteries</strong><br>7-14 day runtime, <15mA avg current</p>
+                    <p><strong>2× CR2032 Batteries</strong><br>7-14 day runtime, &lt;15mA avg current</p>
                 </div>
             </div>
 
@@ -313,7 +351,7 @@
             <p>Detects rapid acceleration drop indicating loss of ground contact. Triggers when G-force drops below 0.5G (threshold adjustable based on user profile).</p>
 
             <h3>Stage 2: Impact Confirmation</h3>
-            <p>Validates fall by detecting high-G spike (>2.5G) following freefall phase. Eliminates false positives from sudden sitting or jumping (which lack proper deceleration signature).</p>
+            <p>Validates fall by detecting high-G spike (&gt;2.5G) following freefall phase. Eliminates false positives from sudden sitting or jumping (which lack proper deceleration signature).</p>
 
             <h3>Stage 3: Orientation Validation</h3>
             <p>Uses gyroscope data to confirm horizontal posture after impact, confirming the person is lying down and unable to self-recover. Validates position for 500-1000ms before triggering alert.</p>
@@ -322,37 +360,9 @@
                 <strong>Performance Metrics:</strong><br>
                 • Sensitivity: 96% (detects 96 of 100 actual falls)<br>
                 • Specificity: 94% (correctly rejects 94 of 100 non-falls)<br>
-                • False Positive Rate: <4%<br>
-                • Alert Latency: <1 second<br>
+                • False Positive Rate: &lt;4%<br>
+                • Alert Latency: &lt;1 second<br>
                 • Battery Life: 7-14 days
-            </div>
-
-            <h2>Product Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Form Factor</h4>
-                    <p>Pendant wearable or watch-style device; lightweight, unobtrusive</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Manufacturing Cost</h4>
-                    <p>$19.99 BOM (Bill of Materials)</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Retail Price</h4>
-                    <p>$49.99 consumer, $20-25/unit institutional</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Gross Margin</h4>
-                    <p>60% consumer, 40% institutional</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Mobile Support</h4>
-                    <p>iOS 13.0+, Android API 30+ (React Native planned)</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Data Privacy</h4>
-                    <p>Local processing, encrypted BLE, HIPAA/GDPR compliant</p>
-                </div>
             </div>
 
             <h2>Market Opportunity</h2>
@@ -366,7 +376,7 @@
             <ul>
                 <li><strong>Price:</strong> $49.99 vs. $300-$1,000+ competitors (10x cheaper)</li>
                 <li><strong>Accuracy:</strong> 96% sensitivity vs. 85-90% for wearable-based systems</li>
-                <li><strong>Speed:</strong> <1 second vs. 5-10 seconds for cloud-dependent systems</li>
+                <li><strong>Speed:</strong> &lt;1 second vs. 5-10 seconds for cloud-dependent systems</li>
                 <li><strong>Privacy:</strong> Local processing, no cloud dependency (vs. competitors requiring data upload)</li>
                 <li><strong>Design:</strong> Stylish wearable vs. bulky medical devices</li>
                 <li><strong>Ease of Use:</strong> One-tap emergency dismissal, automatic caregiver notification</li>
@@ -450,8 +460,8 @@
             <h2>Documentation & Resources</h2>
             <div class="download-section">
                 <p>Access detailed documentation and business materials:</p>
-                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">📊 Full Business Plan (PDF)</a>
-                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🔧 Technical Specifications</a>
+                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">📊 Full Business Plan</a>
+                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🔧 Technical Specs</a>
                 <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🎨 Brand Guidelines</a>
             </div>
 
@@ -467,7 +477,7 @@
             <p>Safe Step Well's advantage: <strong>10x cheaper, faster alerts, better accuracy, privacy-first design</strong></p>
 
             <h2>Why This Matters</h2>
-            <p>Falls are a leading cause of disability for older Americans. Early detection and fast caregiver notification can mean the difference between a quick recovery and catastrophic injury. Safe Step Well makes fall detection accessible, affordable, and fast—enabling elderly adults to live independently with confidence that help is just a fall away.</p>
+            <p>Falls are a leading cause of disability for older Americans. Early detection and fast caregiver notification can mean the difference between a quick recovery and catastrophic injury. Safe Step Well democratizes access to professional-grade fall detection technology.</p>
 
             <div class="highlight-box">
                 <strong>Vision:</strong> A world where no one has to fear a fall. Safe Step Well brings professional-grade fall detection to everyone—affordable, reliable, and always there.
