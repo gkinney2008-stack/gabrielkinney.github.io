@@ -3,314 +3,281 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gabriel Kinney - Engineering Portfolio</title>
+    <title>Gabriel Kinney – Engineering Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --primary-color: #000000;
-            --accent-color: #ffffff;
-            --text-dark: #1a1a1a;
-            --text-light: #666666;
-            --bg-light: #f9f9f9;
-            --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
         }
 
-        /* Navigation */
+        /* ── NAV ── */
         nav {
-            background-color: var(--primary-color);
-            padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
+            z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
         }
 
         nav a {
-            color: var(--white);
+            color: var(--light-gray);
             text-decoration: none;
+            font-size: 0.85rem;
             font-weight: 500;
-            transition: color 0.3s ease;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
         }
 
-        nav a:hover {
-            color: #cccccc;
-        }
+        nav a:hover { color: var(--white); }
 
-        /* Hero Section */
+        /* ── HERO ── */
         .hero {
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-            color: var(--white);
-            padding: 6rem 2rem;
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            padding: 5rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--light-gray);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
             font-weight: 700;
+            color: var(--pure-white);
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-        }
-
-        .hero .tagline {
-            color: #cccccc;
-            font-weight: 600;
-            margin-bottom: 2rem;
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--light-gray);
+            max-width: 480px;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
         }
 
         .cta-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            cursor: pointer;
+            padding: 0.75rem 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
+            border-radius: 2px;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
             display: inline-block;
         }
 
         .btn-primary {
             background-color: var(--white);
-            color: var(--primary-color);
+            color: var(--black);
         }
 
         .btn-primary:hover {
-            background-color: #e0e0e0;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+            background-color: var(--pure-white);
         }
 
         .btn-secondary {
             background-color: transparent;
             color: var(--white);
-            border: 2px solid var(--white);
+            border: 1px solid var(--border);
         }
 
         .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary-color);
+            border-color: var(--white);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
+        /* ── SECTIONS ── */
+        .section {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 5rem 2rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        /* Section Styles */
-        section {
-            padding: 4rem 2rem;
-            background-color: var(--white);
-            margin: 2rem 0;
-            border-radius: 8px;
+        .section-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--light-gray);
+            margin-bottom: 3rem;
         }
 
-        section h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            text-align: center;
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
             font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 2.5rem;
+            line-height: 1.2;
         }
 
-        section h3 {
-            color: var(--primary-color);
-            margin-top: 1.5rem;
-            font-size: 1.5rem;
-        }
-
-        /* About Section */
-        .about-content {
+        /* ── ABOUT ── */
+        .about-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        .about-text h3 {
-            color: #000000;
-            font-size: 1.3rem;
-            margin-top: 0;
+        .about-photo {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 2px;
+            filter: grayscale(100%);
+            border: 1px solid var(--border);
         }
 
         .about-text p {
-            margin-bottom: 1rem;
-            line-height: 1.8;
-            color: var(--text-light);
+            color: var(--light-gray);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+            font-size: 1rem;
         }
 
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1rem;
+            gap: 1px;
+            margin-top: 2.5rem;
+            border: 1px solid var(--border);
         }
 
         .skill-item {
-            background-color: var(--bg-light);
-            padding: 1rem;
-            border-left: 4px solid var(--primary-color);
-            border-radius: 4px;
+            padding: 1.2rem;
+            border: 1px solid var(--border);
         }
 
         .skill-item strong {
-            color: var(--primary-color);
+            display: block;
+            color: var(--pure-white);
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.3rem;
         }
 
-        /* Projects Grid */
+        .skill-item span {
+            font-size: 0.8rem;
+            color: var(--mid-gray);
+        }
+
+        /* ── PROJECTS ── */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
         }
 
         .project-card {
-            background-color: var(--white);
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow);
+            background-color: var(--off-black);
+            padding: 2rem;
             display: flex;
             flex-direction: column;
+            border: 1px solid var(--border);
+            transition: background-color 0.2s;
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-            border-color: var(--primary-color);
+            background-color: var(--dark-gray);
         }
 
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #000000, #333333);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            font-size: 3rem;
-        }
-
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .project-emoji {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
             display: block;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .gallery-card {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            background-color: var(--white);
-            border: 1px solid #e0e0e0;
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-card p {
-            padding: 1rem;
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-content h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .project-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--pure-white);
+            margin-bottom: 0.4rem;
         }
 
         .project-meta {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
         .project-description {
+            font-size: 0.9rem;
+            color: var(--light-gray);
             flex-grow: 1;
-            color: var(--text-light);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.65;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
         }
 
         .tag {
-            background-color: var(--bg-light);
-            color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border: 1px solid #d0d0d0;
+            font-size: 0.7rem;
+            color: var(--mid-gray);
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.6rem;
+            border-radius: 2px;
+            letter-spacing: 0.05em;
         }
 
         .project-links {
@@ -321,128 +288,142 @@
 
         .project-links a {
             flex: 1;
-            padding: 0.5rem 1rem;
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-decoration: none;
-            border-radius: 4px;
+            padding: 0.55rem 0.8rem;
+            font-size: 0.75rem;
             text-align: center;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            color: var(--light-gray);
+            transition: all 0.2s;
+            border-radius: 2px;
         }
 
         .project-links a:hover {
-            background-color: #333333;
+            border-color: var(--white);
+            color: var(--pure-white);
         }
 
-        /* Experience Section */
+        /* ── EXPERIENCE ── */
         .experience-item {
-            border-left: 4px solid var(--primary-color);
-            padding-left: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .experience-item h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-        }
-
-        .experience-meta {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-description {
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
             gap: 2rem;
-            margin-top: 2rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .experience-item:last-of-type {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-meta {
+            font-size: 0.78rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.04em;
+            padding-top: 0.15rem;
+        }
+
+        .exp-body h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--pure-white);
+            margin-bottom: 0.4rem;
+        }
+
+        .exp-body p {
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            font-weight: 300;
+        }
+
+        /* Awards */
+        .awards-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .awards-list li {
+            padding: 0.85rem 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            display: flex;
+            gap: 0.8rem;
+            align-items: baseline;
+        }
+
+        .awards-list li:last-child {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .award-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ── CONTACT ── */
+        .contact-grid {
+            display: flex;
+            gap: 2rem;
             flex-wrap: wrap;
         }
 
         .contact-link {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 0.3rem;
             text-decoration: none;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
+            color: var(--light-gray);
+            transition: color 0.2s;
+            border: 1px solid var(--border);
+            padding: 1.2rem 1.8rem;
+            min-width: 140px;
+            border-radius: 2px;
         }
 
         .contact-link:hover {
-            color: #666666;
+            color: var(--pure-white);
+            border-color: var(--white);
         }
 
-        .contact-link-icon {
-            font-size: 2rem;
+        .contact-link-icon { font-size: 1.4rem; }
+
+        .contact-link strong {
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--pure-white);
         }
 
-        /* Footer */
+        .contact-link small {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+        }
+
+        /* ── FOOTER ── */
         footer {
-            background-color: var(--primary-color);
-            color: var(--white);
             text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.78rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.06em;
         }
 
-        /* Responsive */
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                gap: 1rem;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center {
-            text-align: center;
-        }
-
-        .mt-2 {
-            margin-top: 2rem;
-        }
-
-        .mb-2 {
-            margin-bottom: 2rem;
+            .about-grid { grid-template-columns: 1fr; }
+            .about-photo { max-width: 220px; }
+            .experience-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .skills-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+
+    <!-- Nav -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
@@ -453,238 +434,242 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section id="home" class="hero">
-        <h1>Gabriel Kinney</h1>
-        <p class="tagline">Mechanical & Electrical Engineer | Innovator | Problem Solver</p>
-        <p>Designing solutions at the intersection of engineering, innovation, and community impact</p>
+        <p class="hero-label">Engineering Portfolio</p>
+        <h1>Gabriel<br>Kinney</h1>
+        <p class="hero-sub">Mechanical engineering student designing solutions at the intersection of innovation and community impact.</p>
         <div class="cta-buttons">
-            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#projects" class="btn btn-primary">View Projects</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="container">
-        <h2>About Me</h2>
-        <div class="about-content">
+    <!-- About -->
+    <div id="about" class="section">
+        <p class="section-label">About</p>
+        <h2>Building things that matter.</h2>
+        <div class="about-grid">
+            <img src="portfolio headshot.JPG" alt="Gabriel Kinney" class="about-photo" />
             <div class="about-text">
-                <h3>Engineering Excellence Through Innovation</h3>
-                <p>I'm a Park Scholar and Stamps Scholar studying Mechanical Engineering at North Carolina School of Science and Mathematics, with a passion for designing products that solve real-world problems.</p>
-                
-                <p>My expertise spans embedded systems, mechanical design, algorithms, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering competitions.</p>
-                
-                <p>Every project I tackle is driven by a commitment to accessibility, sustainability, and creating meaningful impact.</p>
+                <p>I'm a Park Scholar and Stamps Scholar studying Mechanical Engineering at the North Carolina School of Science and Mathematics, with a passion for designing products that solve real-world problems.</p>
+                <p>My work spans embedded systems, mechanical design, analog electronics, and entrepreneurship. I've led cross-functional teams, published research on advanced materials, and competed nationally in engineering challenges.</p>
+                <p>Every project I take on is driven by a commitment to accessibility, sustainability, and meaningful impact.</p>
 
-                <h3 style="color: var(--primary-color);">Core Competencies</h3>
                 <div class="skills-grid">
                     <div class="skill-item">
                         <strong>Hardware Design</strong>
-                        <p>PCB design, embedded systems, CAD/3D modeling</p>
+                        <span>PCB design, embedded systems, CAD/3D modeling</span>
                     </div>
                     <div class="skill-item">
                         <strong>Firmware Development</strong>
-                        <p>C/C++, ARM Mbed, real-time algorithms</p>
+                        <span>C/C++, ARM Mbed, real-time algorithms</span>
                     </div>
                     <div class="skill-item">
                         <strong>Mechanical Engineering</strong>
-                        <p>Structural analysis, mechanical advantage, manufacturing</p>
+                        <span>Structural analysis, mechanical advantage, manufacturing</span>
                     </div>
                     <div class="skill-item">
                         <strong>Full-Stack Product</strong>
-                        <p>Hardware + software + go-to-market strategy</p>
+                        <span>Hardware + software + go-to-market strategy</span>
                     </div>
                     <div class="skill-item">
                         <strong>Leadership</strong>
-                        <p>NSBE President, team coordination, mentoring</p>
+                        <span>NSBE President, team coordination, mentoring</span>
                     </div>
                     <div class="skill-item">
                         <strong>Research</strong>
-                        <p>Published materials science, data analysis, technical writing</p>
+                        <span>Published materials science, data analysis, technical writing</span>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="container">
-        <h2>Featured Projects</h2>
+    <!-- Projects -->
+    <div id="projects" class="section">
+        <p class="section-label">Projects</p>
+        <h2>Featured work.</h2>
         <div class="projects-grid">
-            <!-- Safe Step Well -->
+
+            <!-- Safe Step -->
             <div class="project-card">
-                <div class="project-image"><img src="./images/capture.jpg" alt="Safe Step Well"></div>
-                <div class="project-content">
-                    <h3>Safe Step Well</h3>
-                    <div class="project-meta">Fall Detection System • 2026</div>
-                    <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity.</p>
-                    <div class="project-tags">
-                        <span class="tag">Embedded Systems</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">BLE</span>
-                        <span class="tag">Healthcare Tech</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="safe-step-well.html">View Details</a>
-                        <a href="#">Documentation</a>
-                    </div>
+                <span class="project-emoji">🧑‍🦯</span>
+                <h3>Safe Step</h3>
+                <div class="project-meta">Fall Detection System · 2026</div>
+                <p class="project-description">Intelligent fall detection and real-time tracking system for elderly care. BBC micro:bit V2 with custom C++ algorithm achieving 96% sensitivity and &lt;4% false positive rate. Bluetooth alerts notify caregivers in &lt;1 second.</p>
+                <div class="project-tags">
+                    <span class="tag">Embedded Systems</span>
+                    <span class="tag">C++</span>
+                    <span class="tag">BLE</span>
+                    <span class="tag">Healthcare Tech</span>
+                </div>
+                <div class="project-links">
+                    <a href="safe-step-well.html">View Details</a>
                 </div>
             </div>
 
             <!-- Polyphonic Piano -->
             <div class="project-card">
-                <div class="project-image">🎹</div>
-                <div class="project-content">
-                    <h3>Polyphonic Piano & Sequencer</h3>
-                    <div class="project-meta">Electronics • EE 4020 • 2025</div>
-                    <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer.</p>
-                    <div class="project-tags">
-                        <span class="tag">Circuit Design</span>
-                        <span class="tag">Analog Electronics</span>
-                        <span class="tag">Prototyping</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="piano-sequencer.html">View Details</a>
-                        <a href="#">Schematics</a>
-                    </div>
+                <span class="project-emoji">🎹</span>
+                <h3>Polyphonic Piano & Sequencer</h3>
+                <div class="project-meta">Electronics · EE 4020 · 2025</div>
+                <p class="project-description">6-note polyphonic synthesizer using 556 timers, LM741 summing amplifier, and LM386 audio output. Features tempo control via 555 timer and 4017 sequencer for programmable melodies.</p>
+                <div class="project-tags">
+                    <span class="tag">Circuit Design</span>
+                    <span class="tag">Analog Electronics</span>
+                    <span class="tag">Prototyping</span>
+                </div>
+                <div class="project-links">
+                    <a href="piano-sequencer.html">View Details</a>
+                    <a href="EE4020_Polyphonic%20Piano%20With%20sequencer%20.pdf" target="_blank">Schematics</a>
                 </div>
             </div>
 
             <!-- Pill Crusher -->
             <div class="project-card">
-                <div class="project-image">⚙️</div>
-                <div class="project-content">
-                    <h3>Pill Crusher Tool</h3>
-                    <div class="project-meta">Mechanical Design • Fall 2025</div>
-                    <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly.</p>
-                    <div class="project-tags">
-                        <span class="tag">CAD Design</span>
-                        <span class="tag">Mechanical Engineering</span>
-                        <span class="tag">Accessibility</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="pill-crusher.html">View Details</a>
-                        <a href="#">CAD Files</a>
-                    </div>
+                <span class="project-emoji">⚙️</span>
+                <h3>Pill Crusher Tool</h3>
+                <div class="project-meta">Mechanical Design · Fall 2025</div>
+                <p class="project-description">Ergonomic pill crushing device with lever-based mechanical advantage system. Designed for accessibility and ease of use. Includes detailed CAD assembly, parts list, and manufacturing specifications.</p>
+                <div class="project-tags">
+                    <span class="tag">CAD Design</span>
+                    <span class="tag">Mechanical Engineering</span>
+                    <span class="tag">Accessibility</span>
+                </div>
+                <div class="project-links">
+                    <a href="pill-crusher.html">View Details</a>
+                    <a href="pill%20crusher%20photo.png" target="_blank">Slide Deck</a>
                 </div>
             </div>
 
             <!-- Mousetrap Car -->
             <div class="project-card">
-                <div class="project-image">🏎️</div>
-                <div class="project-content">
-                    <h3>Mousetrap Car Design</h3>
-                    <div class="project-meta">Mechanical Engineering • EE4000 • 2024</div>
-                    <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction.</p>
-                    <div class="project-tags">
-                        <span class="tag">Mechanical Analysis</span>
-                        <span class="tag">Energy Optimization</span>
-                        <span class="tag">Testing & Validation</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="mousetrap-car.html">View Details</a>
-                        <a href="#">Research Paper</a>
-                    </div>
+                <span class="project-emoji">🏎️</span>
+                <h3>Mousetrap Car Design</h3>
+                <div class="project-meta">Mechanical Engineering · EE4000 · 2024</div>
+                <p class="project-description">Optimized energy-efficient vehicle design achieving 364% improvement in distance over baseline. Increased wheel size, lever arm length, and reduced friction through precision manufacturing and material science analysis.</p>
+                <div class="project-tags">
+                    <span class="tag">Mechanical Analysis</span>
+                    <span class="tag">Energy Optimization</span>
+                    <span class="tag">Testing & Validation</span>
+                </div>
+                <div class="project-links">
+                    <a href="mousetrap-car.html">View Details</a>
+                    <a href="EE4000%20MCDP%20Report.pdf" target="_blank">Research Paper</a>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Project Photos Gallery -->
-    <section class="container">
-        <h2>Project Photos</h2>
-        <div class="gallery-grid">
-            <div class="gallery-card">
-                <img src="./images/capture.jpg" alt="Safe Step Well" />
-                <p>Safe Step Well prototype and interface mockup for the fall detection system.</p>
-            </div>
-            <div class="gallery-card">
-                <img src="./images/hand_skeleton.jpg" alt="Advanced Processing" />
-                <p>Advanced image processing and skeleton tracking output demonstrations.</p>
-            </div>
-            <div class="gallery-card">
-                <img src="./images/output.jpg" alt="Project Output" />
-                <p>Project results and technical output from various engineering projects.</p>
-            </div>
-            <div class="gallery-card">
-                <img src="./images/nsbe_windturbine.jpg" alt="NSBE Wind Turbine" />
-                <p>NSBE wind turbine project for sustainable engineering demonstrations.</p>
-            </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="container">
-        <h2>Experience & Leadership</h2>
-        
+    <!-- Experience -->
+    <div id="experience" class="section">
+        <p class="section-label">Experience</p>
+        <h2>Work & leadership.</h2>
+
         <div class="experience-item">
-            <h3>NSBE President</h3>
-            <div class="experience-meta">2024 - 2025 | National Society of Black Engineers</div>
-            <p class="experience-description">Leading chapter initiatives, organizing events, mentoring students, and building community within the engineering program. Coordinating competitive challenges and professional development opportunities.</p>
+            <div class="exp-meta">Fayetteville, NC<br>Co-Founder</div>
+            <div class="exp-body">
+                <h3>G&W Auto Detailing — CFO & Co-Founder</h3>
+                <p>Co-founded a mobile auto detailing operation, growing from zero to 100+ clients and $5,000+ in revenue. Designed pricing models, led localized customer acquisition, and managed all day-to-day operations and cash flow.</p>
+            </div>
         </div>
 
         <div class="experience-item">
-            <h3>Junior Researcher</h3>
-            <div class="experience-meta">February 2024 - April 2025 | Fayetteville State University</div>
-            <p class="experience-description">Conducted research on materials science and structural stability. Co-authored published paper on MXenes and advanced materials analysis.</p>
+            <div class="exp-meta">NASA<br>Student Leader Assistant</div>
+            <div class="exp-body">
+                <h3>NASA — Student Leader Assistant & Geospatial Researcher</h3>
+                <p>Promoted to Student Leader after winning 1st place in a NASA bridge engineering challenge. Analyzed urban growth patterns in the Charlotte metro area using ArcGIS geospatial data modeling. Taught and managed 20+ students in drone fabrication, disaster-response simulations, and resilient infrastructure design.</p>
+            </div>
         </div>
 
         <div class="experience-item">
-            <h3>ANPA Research Scholar</h3>
-            <div class="experience-meta">May 2023 - April 2025 | Research Fellowship</div>
-            <p class="experience-description">Conducted advanced research projects focused on STEM education and materials innovation. Presented findings at conferences and published in academic journals.</p>
-        </div>
-
-        <h3 style="margin-top: 2rem;">Honors & Awards</h3>
-        <div class="experience-item" style="border-left: 4px solid var(--primary-color);">
-            <ul style="margin-left: 1rem; color: var(--text-light);">
-                <li>🏆 Park Scholar (NC State University)</li>
-                <li>🏆 Stamps Scholar - Top 393 of 655,000 applicants</li>
-                <li>🏆 Ron Brown Scholar & Captain</li>
-                <li>🥇 1st Place NSBE KIDWIND National Challenge</li>
-                <li>🥉 3rd Place NSBE KIDWIND National Challenge</li>
-                <li>🥈 2nd Place Massy Hill Classical Tournament</li>
-                <li>🥇 1st Place In Debate & Business Success</li>
-                <li>🥇 1st Place Bridge Resiliency Competition</li>
-                <li>📜 Published Research: "Structural Stability and Electronic Structure of (Ti,Ta)2C MXenes"</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container">
-        <h2>Get In Touch</h2>
-        <div class="contact-content">
-            <p>I'm always interested in discussing new projects, opportunities, and ideas. Feel free to reach out!</p>
-            <div class="contact-links">
-                <a href="mailto:gkinney2008@gmail.com" class="contact-link">
-                    <div class="contact-link-icon">📧</div>
-                    <div>Email</div>
-                    <small>gkinney2008@gmail.com</small>
-                </a>
-                <a href="https://www.linkedin.com/in/gabrielkinney-129238256" target="_blank" class="contact-link">
-                    <div class="contact-link-icon">💼</div>
-                    <div>LinkedIn</div>
-                    <small>Profile</small>
-                </a>
-                <a href="https://github.com" target="_blank" class="contact-link">
-                    <div class="contact-link-icon">💻</div>
-                    <div>GitHub</div>
-                    <small>Repository</small>
-                </a>
-                <a href="tel:+1234567890" class="contact-link">
-                    <div class="contact-link-icon">📱</div>
-                    <div>Phone</div>
-                    <small>Available</small>
-                </a>
+            <div class="exp-meta">NSBE<br>President & Lead Engineer</div>
+            <div class="exp-body">
+                <h3>National Society of Black Engineers — President & Lead Engineer</h3>
+                <p>Directed CAD modeling, aerodynamic simulation, and manufacturing for two teams building custom high-performance wind turbines. Led chapters to 1st and 3rd place at the KidWind National Championship, earning international qualification. Managed budgeting, fundraising, and logistics for a 35+ student chapter.</p>
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
+        <div class="experience-item">
+            <div class="exp-meta">Fayetteville State University<br>Junior Researcher</div>
+            <div class="exp-body">
+                <h3>FSU Department of Physics & Chemistry — Junior Researcher</h3>
+                <p>Modeled the atomic and electronic structure of Scandium Carbide (Sc₂C) using VESTA and VASP simulation software to evaluate its viability for sustainable battery anodes. Co-authored a peer-reviewed paper on the material's magnetic and electronic properties for energy storage applications.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="exp-meta">NC State University<br>Design & Fabrication Intern</div>
+            <div class="exp-body">
+                <h3>NC State Aerospace Engineering — Design & Fabrication Intern</h3>
+                <p>Assembled and calibrated a modular multi-fan wind tunnel array for experimental aerodynamic research. Programmed Arduino microcontrollers for localized fan speed control and integrated electrical system enclosures using CNC machining.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="exp-meta">FRC Team 900<br>Mechanical Engineer</div>
+            <div class="exp-body">
+                <h3>FIRST Robotics — Mechanical Fabrication Engineer</h3>
+                <p>Manufactured custom structural subsystems for a World Championship-qualifying robot using CNC routers, bandsaws, and drill presses. Generated custom toolpaths and machine profiles using Aspire CAD/CAM software.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="exp-meta">Campbell University<br>CFO</div>
+            <div class="exp-body">
+                <h3>Free Enterprise Leadership Challenge — CFO</h3>
+                <p>Elected CFO for a fast-paced startup simulation at Campbell University, managing budgeting and dynamic pricing strategy. Won 1st Place overall out of all competing ventures for business viability and execution.</p>
+            </div>
+        </div>
+
+        <p class="section-label" style="margin-top:3rem; margin-bottom:1rem;">Honors & Awards</p>
+        <ul class="awards-list">
+            <li><span class="award-icon">🏆</span> <span><strong style="color:var(--pure-white)">Park Scholar</strong> – NC State University &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Highly selective full merit scholarship</span></span></li>
+            <li><span class="award-icon">🏆</span> <span><strong style="color:var(--pure-white)">Stamps Scholar</strong> – Top 393 of 655,000 applicants &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">National merit scholarship</span></span></li>
+            <li><span class="award-icon">🏆</span> <span><strong style="color:var(--pure-white)">Ron Brown Scholar & Captain</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Nationally competitive leadership scholarship</span></span></li>
+            <li><span class="award-icon">🥇</span> <span><strong style="color:var(--pure-white)">1st Place – NSBE KidWind National (Open Division)</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">International qualifier · Mar 2025 · Led design, CAD, fabrication & physics presentation</span></span></li>
+            <li><span class="award-icon">🥈</span> <span><strong style="color:var(--pure-white)">2nd Place – Duke HPREP Research Presentation</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Duke University School of Medicine · Apr 2025 · Original research on opioid overdose mitigation, presented to 70+ attendees</span></span></li>
+            <li><span class="award-icon">🥈</span> <span><strong style="color:var(--pure-white)">2nd Place – Duke LEAD-WISER Advocacy Research Conference</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Duke University · Apr 2025 · Environmental justice research & investor pitch competition</span></span></li>
+            <li><span class="award-icon">🥈</span> <span><strong style="color:var(--pure-white)">2nd Place – NSBE R2 Try-Math-alon</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">National Society of Black Engineers · Nov 2025</span></span></li>
+            <li><span class="award-icon">🥇</span> <span><strong style="color:var(--pure-white)">1st Place – NASA Bridge Resilience Competition</strong> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Superior structural integrity under strict engineering specifications</span></span></li>
+            <li><span class="award-icon">📜</span> <span><strong style="color:var(--pure-white)">Published Research</strong> &nbsp;<a href="https://www.nepjol.info/index.php/JNPhysSoc/article/view/72828" target="_blank" style="color:var(--light-gray);text-decoration:underline;text-underline-offset:3px;">"Structural Stability and Electronic Structure of (Ti,Ta)2C MXenes"</a> &nbsp;<span style="color:var(--mid-gray);font-size:0.78rem;">Journal of Nepal Physical Society · Co-authored</span></span></li>
+        </ul>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="section">
+        <p class="section-label">Contact</p>
+        <h2>Let's connect.</h2>
+        <p style="color:var(--light-gray); margin-bottom:2rem; font-weight:300;">I'm always open to discussing new projects, opportunities, and ideas.</p>
+        <div class="contact-grid">
+            <a href="mailto:gkinney2008@gmail.com" class="contact-link">
+                <span class="contact-link-icon">📧</span>
+                <strong>Email</strong>
+                <small>gkinney2008@gmail.com</small>
+            </a>
+            <a href="https://www.linkedin.com/in/gabrielkinney-129238256" target="_blank" class="contact-link">
+                <span class="contact-link-icon">💼</span>
+                <strong>LinkedIn</strong>
+                <small>View Profile</small>
+            </a>
+            <a href="https://github.com/gkinney2008-stack" target="_blank" class="contact-link">
+                <span class="contact-link-icon">💻</span>
+                <strong>GitHub</strong>
+                <small>gkinney2008-stack</small>
+            </a>
+            <a href="tel:+1234567890" class="contact-link">
+                <span class="contact-link-icon">📱</span>
+                <strong>Phone</strong>
+                <small>Available on request</small>
+            </a>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Gabriel Kinney. All rights reserved.</p>
-        <p>Engineering Excellence | Innovation | Impact</p>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Engineering Excellence · Innovation · Impact</p>
     </footer>
+
 </body>
 </html>
