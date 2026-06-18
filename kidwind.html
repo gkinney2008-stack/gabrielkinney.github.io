@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidWind Wind Turbine – Gabriel Kinney</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
+        }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; }
+
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .project-photo {
+            width: 100%; max-height: 420px; object-fit: cover; object-position: center;
+            border: 1px solid var(--border); border-radius: 2px;
+            filter: grayscale(100%); margin: 2rem 0; display: block;
+        }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+        .metric-card { background-color: var(--off-black); padding: 1.5rem; border: 1px solid var(--border); }
+        .metric-card .metric-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--pure-white); display: block; margin-bottom: 0.3rem; }
+        .metric-card .metric-label { font-size: 0.72rem; color: var(--mid-gray); letter-spacing: 0.08em; text-transform: uppercase; }
+
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
+
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
+
+        .stage-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
+
+        .parts-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.82rem; }
+        .parts-table th { text-align: left; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--mid-gray); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.72rem; }
+        .parts-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--light-gray); font-weight: 300; }
+        .parts-table tr:last-child td { border-bottom: none; }
+        .parts-table tr:hover td { color: var(--pure-white); }
+        .parts-table .total td { color: var(--pure-white); font-weight: 500; border-top: 1px solid var(--border); }
+
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.95rem; }
+
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
+
+        @media (max-width: 640px) { .stage-item { grid-template-columns: 1fr; gap: 0.3rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">← Portfolio</a></li>
+            <li><a href="index.html#projects">All Projects</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <p class="hero-label">NSBE Jr. · KidWind Open Division · March 2025</p>
+        <span class="hero-emoji">💨</span>
+        <h1>KidWind<br>Wind Turbine</h1>
+        <p class="hero-sub">NCSSM SmathForce · 1st Place National Champion · International Qualifier</p>
+    </div>
+
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>Introduction.</h2>
+        <p>Wind turbines are a crucial source of renewable energy, harnessing the power of wind to generate electricity efficiently. As team lead for NCSSM SmathForce, I directed our team through an extensive engineering design process — from blade concept to national championship.</p>
+        <p>The project involved exploring different blade designs, studying wind turbine physics, iterating through multiple prototypes with varying blade geometries and gear ratios, and optimizing turbine generation in balance with torque and RPM.</p>
+
+        <img src="nsbe_windturbine.jpg" alt="NSBE KidWind wind turbine build" class="project-photo" />
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">🥇 1st</span>
+                <span class="metric-label">Place — National</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">0.52W</span>
+                <span class="metric-label">Power output</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">83.3%</span>
+                <span class="metric-label">Electrical efficiency</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">104.1</span>
+                <span class="metric-label">RPM @ 3.5 m/s</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">1:15</span>
+                <span class="metric-label">Gear ratio</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Design Process -->
+    <div class="section">
+        <span class="section-label">Engineering Design Process</span>
+        <h2>How we built it.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Idea Generation</div>
+            <div class="stage-body">
+                <strong>Research & Concept</strong>
+                <p>Explored different blade designs and studied wind turbine vocabulary, physics, and existing competition results. Sought guidance from NCSSM engineering instructors.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Prototyping</div>
+            <div class="stage-body">
+                <strong>Fabrication Lab & CAD</strong>
+                <p>Utilized the school's fabrication lab extensively. Broke down complex engineering challenges into manageable subsystems. Iterated through multiple prototypes with varying blade designs, gear ratios, and generators.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Testing</div>
+            <div class="stage-body">
+                <strong>Refinement & Analysis</strong>
+                <p>Optimized turbine generation in cohesion with torque and RPM targets. Used LoggerPro video analysis to calculate RPM and Vernier Graphical Analysis to measure voltage output.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Final Production</div>
+            <div class="stage-body">
+                <strong>Competition Build</strong>
+                <p>Finalized modular PVC-pipe base, 3D-printed gearbox, laser-cut blades, and 3V–12V DC motor generator. Designed for 48×48 in wind tunnel constraints and easy transport.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Physics -->
+    <div class="section">
+        <span class="section-label">Physics</span>
+        <h2>Key principles applied.</h2>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <strong>Torque</strong>
+                <span>Rotational force generated by blades. Affected by wind speed and blade angle. Balanced against RPM for optimal power output.</span>
+            </div>
+            <div class="spec-card">
+                <strong>RPM</strong>
+                <span>Speed at which blades rotate. Measured at 104.1 RPM under 3.5 m/s wind (1× fan). Higher wind speeds yield higher RPM.</span>
+            </div>
+            <div class="spec-card">
+                <strong>Moment of Inertia</strong>
+                <span>Resistance of blades to changes in rotational speed. Affected by blade mass and shape — considered in all design iterations.</span>
+            </div>
+            <div class="spec-card">
+                <strong>Volts & Amps</strong>
+                <span>Electrical output: V × A = Watts. Best result: 2.5V with 12Ω resistance → 0.52W. Physics formula V²/R used to derive power and current.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAD Components -->
+    <div class="section">
+        <span class="section-label">CAD Design</span>
+        <h2>Components modeled.</h2>
+        <ul class="styled-list">
+            <li><strong style="color:var(--pure-white);">Gears</strong> — Ring gear and pinion for 1:15 gear ratio, 3D printed at fabrication lab</li>
+            <li><strong style="color:var(--pure-white);">Hub</strong> — Dome-shaped nose piece with 15° pitch built in for blade angle optimization</li>
+            <li><strong style="color:var(--pure-white);">Gear Box</strong> — Custom enclosure housing the gear train and motor, 3D printed</li>
+            <li><strong style="color:var(--pure-white);">Fastener</strong> — Modular connector for attaching and detaching turbine head from base</li>
+            <li><strong style="color:var(--pure-white);">Blade</strong> — Airfoil profile designed in Onshape, laser-cut from draftboard material</li>
+        </ul>
+    </div>
+
+    <!-- Blade Design -->
+    <div class="section">
+        <span class="section-label">Blade Design</span>
+        <h2>Three iterations.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Design 1 & 2</div>
+            <div class="stage-body">
+                <strong>Less Surface Area — More RPM</strong>
+                <p>Gradual width increase from base to tip. Prioritized higher RPM output. Laser-cut from draftboard material.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Design 3</div>
+            <div class="stage-body">
+                <strong>More Surface Area — Higher Torque</strong>
+                <p>Wide and curved, resembling a leaf. Prioritized torque over RPM. Ultimately produced best voltage output (2.5V with Design 1 wings, 0.52W).</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Final Spec</div>
+            <div class="stage-body">
+                <strong>5 Blades · ~17 in Length · 15° Pitch</strong>
+                <p>5 blades at ~17 inches each to maximize swept area. 15° pitch built into the fabricated nose piece. Moment of inertia considered to balance torque and RPM targets.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Base & Structure -->
+    <div class="section">
+        <span class="section-label">Structural Design</span>
+        <h2>The base.</h2>
+        <ul class="styled-list">
+            <li>Square PVC-pipe frame — modular and fits within 48×48 in wind tunnel</li>
+            <li>Connecting centerpiece allows turbine head to attach and detach for testing</li>
+            <li>PVC pipe shaft drilled with 0.5 in drill bits for bearing placement</li>
+            <li>Emphasis on reusability and ease of modification between test runs</li>
+        </ul>
+    </div>
+
+    <!-- Generator & Gears -->
+    <div class="section">
+        <span class="section-label">Generator & Drivetrain</span>
+        <h2>Power generation.</h2>
+        <p>Initial generators failed — they couldn't handle the torque and RPM profile of the turbine. After calculating blade angular velocity (ω = 1.735 rev/s, RPM = 104.1 at 3.5 m/s), the team selected a 3V–12V DC motor matched to the following criteria:</p>
+        <ul class="styled-list">
+            <li>Operating RPM compatible with 104.1 blade RPM pre-gearing</li>
+            <li>1:15 gear ratio to step up RPM to generator's optimal operating range</li>
+            <li>Low torque requirement to avoid stalling the turbine</li>
+            <li>Wide voltage range (3V–12V) for flexibility across wind speeds</li>
+        </ul>
+
+        <div class="highlight">
+            <p><strong style="color:var(--pure-white);">Best result:</strong> 2.5V at 12Ω resistance with Design 1 blades → <strong style="color:var(--pure-white);">0.52 watts</strong> at <strong style="color:var(--pure-white);">83.33% electrical efficiency</strong>. Voltage measured using Vernier Graphical Analysis; RPM calculated via LoggerPro video tracking.</p>
+        </div>
+    </div>
+
+    <!-- Materials -->
+    <div class="section">
+        <span class="section-label">Bill of Materials</span>
+        <h2>Materials & cost.</h2>
+        <table class="parts-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Source</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Large Axles</td><td>1</td><td>Amazon</td><td>$9.99</td></tr>
+                <tr><td>Bearings</td><td>1</td><td>Amazon</td><td>$8.06</td></tr>
+                <tr><td>10 ft PVC Pipe (Base)</td><td>1</td><td>Home Depot</td><td>$17.74</td></tr>
+                <tr><td>2 ft PVC Pipe (Shaft)</td><td>2</td><td>Home Depot</td><td>$15.92</td></tr>
+                <tr><td>PVC Elbow Connectors</td><td>4</td><td>Home Depot</td><td>$12.84</td></tr>
+                <tr><td>PVC Tee Connectors</td><td>3</td><td>Home Depot</td><td>$14.85</td></tr>
+                <tr><td>Motor (6-pack)</td><td>1</td><td>Amazon</td><td>$10.59</td></tr>
+                <tr><td>3D Printed Parts (Gears, Box, Spacers, Fastener)</td><td>—</td><td>Fabrication Lab</td><td>$4.05</td></tr>
+                <tr class="total"><td><strong>Total</strong></td><td></td><td></td><td><strong>$94.04</strong></td></tr>
+            </tbody>
+        </table>
+
+        <div class="highlight">
+            <p>Full slide deck with CAD renders, blade design progression, RPM data, and voltage graphs available in the <a href="Kidwind%20Open%20Division%20slides.pdf" target="_blank" style="color:var(--white);text-decoration:underline;text-underline-offset:3px;">competition presentation PDF</a>.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; KidWind Wind Turbine · NCSSM SmathForce</p>
+    </footer>
+
+</body>
+</html>
