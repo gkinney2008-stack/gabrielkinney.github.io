@@ -3,166 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polyphonic Piano & Sequencer - Gabriel Kinney Portfolio</title>
+    <title>Polyphonic Piano & Sequencer – Gabriel Kinney</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-color: #003366; --accent-color: #00BCD4; --text-dark: #333333; --text-light: #666666; --bg-light: #f5f5f5; --white: #ffffff; --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--bg-light); }
-        nav { background-color: var(--primary-color); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        nav a { color: var(--white); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: var(--accent-color); }
-        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-        .content { background-color: var(--white); padding: 3rem 2rem; border-radius: 8px; margin: 2rem 0; }
-        h2 { color: var(--primary-color); font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.5rem; }
-        h3 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .spec-card { background-color: var(--bg-light); padding: 1.5rem; border-radius: 6px; border-left: 4px solid var(--accent-color); }
-        .spec-card h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--primary-color); text-decoration: none; font-weight: 600; }
-        footer { background-color: var(--primary-color); color: var(--white); text-align: center; padding: 2rem; margin-top: 4rem; }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; color: var(--text-light); }
-        .highlight-box { background-color: #e3f2fd; border-left: 4px solid var(--accent-color); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
+        }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; }
+
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .circuit-photo {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            object-position: center;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            filter: grayscale(100%);
+            margin: 2rem 0;
+            display: block;
+        }
+
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
+
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
+
+        .stage-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
+
+        /* Parts table */
+        .parts-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.82rem; }
+        .parts-table th { text-align: left; padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--mid-gray); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.72rem; }
+        .parts-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--light-gray); font-weight: 300; }
+        .parts-table tr:last-child td { border-bottom: none; }
+        .parts-table tr:hover td { color: var(--pure-white); }
+
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.95rem; }
+
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
+
+        @media (max-width: 640px) { .stage-item { grid-template-columns: 1fr; gap: 0.3rem; } }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
-            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html">← Portfolio</a></li>
             <li><a href="index.html#projects">All Projects</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>🎹 Polyphonic Piano & Sequencer</h1>
-        <p>Electronics Project | EE 4020 | Spring 2025</p>
-    </section>
+    <div class="hero">
+        <p class="hero-label">Electronics · EE 4020 · December 2025</p>
+        <span class="hero-emoji">🎹</span>
+        <h1>Polyphonic Piano<br>& Sequencer</h1>
+        <p class="hero-sub">Analog synthesis · Discrete components · Audio signal processing</p>
+    </div>
 
-    <div class="container">
-        <div class="content">
-            <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>How does this work?</h2>
+        <p>The Polyphonic Piano uses a series of 556 timers in an astable multivibrator circuit to produce frequencies matching 6 notes in the C5 octave. Each note's frequency is set by a 500kΩ potentiometer. All 6 note signals are fed into an LM741 summing amplifier, which combines them into a single signal. That signal is then directed to an LM386 audio amplifier and speaker circuit, which converts it into sound.</p>
+        <p>The sequencer is built from an LM555 timer and a 4017 IC. The 555 controls how often the notes play; the 4017 sequences them in order — producing a melody.</p>
 
-            <h2>Project Overview</h2>
-            <p>Designed and built a fully functional 6-note polyphonic synthesizer from discrete analog components. The system combines 556 timer ICs for note generation, LM741 summing amplifier for audio mixing, and LM386 audio amplifier for speaker output. Implemented a 4017 counter for sequencer functionality with programmable melody playback.</p>
+        <img src="piano photo.jpg" alt="Polyphonic Piano circuit build" class="circuit-photo" />
+    </div>
 
-            <div class="highlight-box">
-                <strong>Key Achievement:</strong> Demonstrated advanced understanding of analog electronics, circuit troubleshooting, and audio signal processing. Successfully debugged complex multi-stage circuit through 5+ hours of systematic testing.
+    <!-- Signal Chain -->
+    <div class="section">
+        <span class="section-label">Circuit Architecture</span>
+        <h2>Signal chain.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Stage 1</div>
+            <div class="stage-body">
+                <strong>Oscillator Bank — 556 Timers (×6)</strong>
+                <p>Each 556 timer runs in astable multivibrator mode, producing a square wave at the frequency of one note (C, D, E, F, G, A in the C5 octave). Frequency is tuned via a 500kΩ potentiometer per note.</p>
             </div>
-
-            <h2>Technical Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Tone Oscillators</h4>
-                    <p>Six 556 timer ICs generating individual note frequencies via voltage dividers</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Audio Mixing</h4>
-                    <p>LM741 op-amp summing amplifier combining all note signals</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Audio Output</h4>
-                    <p>LM386 audio amplifier, speaker driver, volume control</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Sequencer</h4>
-                    <p>4017 decade counter for tempo control, programmable sequences</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Tempo Control</h4>
-                    <p>555 timer-based clock generator with variable frequency</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Power Supply</h4>
-                    <p>±12V dual supply, decoupling capacitors for stability</p>
-                </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Stage 2</div>
+            <div class="stage-body">
+                <strong>Summing Amplifier — LM741</strong>
+                <p>All six oscillator outputs feed into an inverting summing amplifier. The LM741 combines their voltages into a single mixed signal for downstream amplification.</p>
             </div>
-
-            <h2>Key Features</h2>
-            <ul>
-                <li><strong>Polyphonic Synthesis:</strong> Play up to 6 notes simultaneously</li>
-                <li><strong>Programmable Sequencer:</strong> Create and play pre-programmed melodies</li>
-                <li><strong>Variable Tempo:</strong> Adjust playback speed via 555 timer frequency</li>
-                <li><strong>Volume Control:</strong> Adjustable output level</li>
-                <li><strong>Full Discrete Analog Design:</strong> No microcontrollers or digital components</li>
-            </ul>
-
-            <h2>Circuit Architecture</h2>
-            <h3>Stage 1: Oscillator Bank (556 Timers)</h3>
-            <p>Each tone oscillator uses a 556 timer IC in astable mode. Frequency selection achieved through digital logic gates controlling which capacitor/resistor pairs are active. This enables selection of musical notes (C, D, E, F, G, A).</p>
-
-            <h3>Stage 2: Summing Amplifier (LM741)</h3>
-            <p>All six oscillator outputs feed into an inverting summing amplifier. The LM741 combines signals while maintaining individual amplitude control. Output impedance matched to prevent signal loading.</p>
-
-            <h3>Stage 3: Output Amplifier (LM386)</h3>
-            <p>Audio signal from summing amplifier feeds into LM386 power amplifier for driving speaker. Includes volume control potentiometer and feedback network for stability.</p>
-
-            <h3>Stage 4: Sequencer (4017 Counter)</h3>
-            <p>4017 decade counter driven by 555 timer clock. Each output selects a different note or rest. Creates repeating sequences up to 10 steps long.</p>
-
-            <h2>Design Challenges & Solutions</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Challenge: Signal Distortion</h4>
-                    <p><strong>Solution:</strong> Added summing resistors to prevent loading, optimized impedance matching between stages</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Challenge: Frequency Drift</h4>
-                    <p><strong>Solution:</strong> Used precision resistors, added temperature compensation, used regulated power supply</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Challenge: Oscillation in Amplifiers</h4>
-                    <p><strong>Solution:</strong> Added compensation capacitors, optimized layout to reduce feedback paths</p>
-                </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Stage 3</div>
+            <div class="stage-body">
+                <strong>Audio Output — LM386 & Speaker</strong>
+                <p>The summed signal is amplified by the LM386 low-voltage audio power amplifier, which drives the speaker to produce audible sound.</p>
             </div>
-
-            <h2>Testing & Validation</h2>
-            <ul>
-                <li>Frequency accuracy testing: Each oscillator verified against standard tuning</li>
-                <li>Polyphony testing: Simultaneous note combinations measured for clarity</li>
-                <li>Sequencer timing: Clock frequency and counter accuracy verified</li>
-                <li>Audio quality: Harmonic distortion analysis and listening tests</li>
-                <li>Long-term stability: 2+ hour continuous operation testing</li>
-            </ul>
-
-            <h2>Learning Outcomes</h2>
-            <ul>
-                <li>Mastery of analog op-amp circuits and timing circuits</li>
-                <li>Understanding of audio signal path design and mixing</li>
-                <li>Troubleshooting methodology for complex multi-stage systems</li>
-                <li>Component selection and impedance matching principles</li>
-                <li>Audio frequency generation and modulation techniques</li>
-            </ul>
-
-            <h2>Applications & Future Work</h2>
-            <p><strong>Current Uses:</strong> Educational demonstration, embedded music generation, sound effects synthesis</p>
-            <p><strong>Future Enhancements:</strong></p>
-            <ul>
-                <li>Add MIDI interface for external sequencer control</li>
-                <li>Implement multiple waveforms (sine, square, triangle)</li>
-                <li>Add envelope generator (ADSR) for dynamic sound shaping</li>
-                <li>Expand to 16-note polyphony with more complex summing network</li>
-                <li>Add filter section for subtractive synthesis effects</li>
-            </ul>
-
-            <h2>Skills Demonstrated</h2>
-            <ul>
-                <li>Analog circuit design and analysis</li>
-                <li>Op-amp applications (summing, buffering, amplification)</li>
-                <li>Timing circuits and frequency generation</li>
-                <li>Digital logic integration with analog circuits</li>
-                <li>Troubleshooting and debugging complex systems</li>
-                <li>Audio signal processing</li>
-                <li>PCB layout and component placement</li>
-            </ul>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Stage 4</div>
+            <div class="stage-body">
+                <strong>Sequencer — LM555 + 4017 IC</strong>
+                <p>The LM555 timer controls the clock frequency — determining how fast the sequence plays. The 4017 decade counter steps through each note in order, producing a repeating melody.</p>
+            </div>
         </div>
     </div>
 
+    <!-- How it differs -->
+    <div class="section">
+        <span class="section-label">Context</span>
+        <h2>How is this different from an electric piano?</h2>
+        <p>Electric pianos use microprocessors to reproduce realistic acoustic tones through digital signal processing. This circuit produces musical notes entirely through square-wave oscillation using discrete analog components — no microcontrollers, no digital processing, no moving parts. Polyphony is physically constrained by the number of oscillators on the breadboard rather than computational limits.</p>
+    </div>
+
+    <!-- Parts List -->
+    <div class="section">
+        <span class="section-label">Bill of Materials</span>
+        <h2>Parts list.</h2>
+        <table class="parts-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Value / Type</th>
+                    <th>Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>556 Timer IC</td><td>Dual timer</td><td>6</td></tr>
+                <tr><td>555 Timer IC</td><td>Single timer</td><td>1</td></tr>
+                <tr><td>4017 IC</td><td>Decade counter/divider (CMOS)</td><td>1</td></tr>
+                <tr><td>LM386</td><td>Low-voltage audio power amplifier</td><td>1</td></tr>
+                <tr><td>LM741</td><td>Op-amp</td><td>1</td></tr>
+                <tr><td>Resistor</td><td>1 kΩ</td><td>13</td></tr>
+                <tr><td>Resistor</td><td>1.8 kΩ</td><td>2</td></tr>
+                <tr><td>Resistor</td><td>1.2 kΩ</td><td>2</td></tr>
+                <tr><td>Resistor</td><td>820 Ω</td><td>2</td></tr>
+                <tr><td>Resistor</td><td>10 kΩ</td><td>7</td></tr>
+                <tr><td>Resistor</td><td>10 Ω</td><td>1</td></tr>
+                <tr><td>Potentiometer</td><td>500 kΩ</td><td>5</td></tr>
+                <tr><td>Potentiometer</td><td>1 kΩ</td><td>1</td></tr>
+                <tr><td>Potentiometer</td><td>100 kΩ</td><td>1</td></tr>
+                <tr><td>Potentiometer</td><td>500 Ω</td><td>1</td></tr>
+                <tr><td>Capacitor</td><td>1 μF</td><td>7</td></tr>
+                <tr><td>Capacitor</td><td>10 nF</td><td>6</td></tr>
+                <tr><td>Capacitor</td><td>10 μF</td><td>2</td></tr>
+                <tr><td>Capacitor</td><td>0.1 μF</td><td>1</td></tr>
+                <tr><td>Capacitor</td><td>0.047 μF</td><td>1</td></tr>
+                <tr><td>1N4148 Diode</td><td>High-speed switching</td><td>6</td></tr>
+                <tr><td>Speaker</td><td>—</td><td>1</td></tr>
+                <tr><td>9V Battery</td><td>—</td><td>2</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Reflections -->
+    <div class="section">
+        <span class="section-label">Reflections</span>
+        <h2>What I learned.</h2>
+
+        <p><strong style="color:var(--pure-white);">How it evolved</strong></p>
+        <p>The build started as a basic circuit with 6 LM556 timers producing different waveforms, then became a digital piano capable of producing 6 in-tune notes, and finally evolved into a fully functioning system — summing signals, amplifying the waveform, controlling tempo, sequencing notes, and producing audio output.</p>
+
+        <p><strong style="color:var(--pure-white);">What went well and what didn't</strong></p>
+        <ul class="styled-list">
+            <li>Calculations for unknown component values (capacitors, resistors, potentiometers) were accurate</li>
+            <li>Wiring was longer than needed and the breadboard layout wasn't planned in advance — made troubleshooting difficult</li>
+            <li>Parts list was created after the build rather than before, requiring components to be removed to identify values</li>
+            <li>Over 5 hours of troubleshooting required to resolve wiring and organization issues</li>
+        </ul>
+
+        <p><strong style="color:var(--pure-white);">Next time</strong></p>
+        <p>Plan the breadboard layout before building, keep a running log of calculated component values, and track the parts list throughout the build — not after. Better organization upfront would significantly cut build and debug time.</p>
+
+        <div class="highlight">
+            <p>Full schematics and waveform captures available in the <a href="EE4020_Polyphonic%20Piano%20With%20sequencer%20.pdf" target="_blank" style="color:var(--white);text-underline-offset:3px;text-decoration:underline;">project report PDF</a>.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Gabriel Kinney | Polyphonic Piano & Sequencer</p>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Polyphonic Piano & Sequencer</p>
     </footer>
+
 </body>
 </html>
