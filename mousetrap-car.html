@@ -3,202 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mousetrap Car Design - Gabriel Kinney Portfolio</title>
+    <title>Mousetrap Car – Gabriel Kinney</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-color: #003366; --accent-color: #00BCD4; --text-dark: #333333; --text-light: #666666; --bg-light: #f5f5f5; --white: #ffffff; --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--bg-light); }
-        nav { background-color: var(--primary-color); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        nav a { color: var(--white); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: var(--accent-color); }
-        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-        .content { background-color: var(--white); padding: 3rem 2rem; border-radius: 8px; margin: 2rem 0; }
-        h2 { color: var(--primary-color); font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.5rem; }
-        h3 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .spec-card { background-color: var(--bg-light); padding: 1.5rem; border-radius: 6px; border-left: 4px solid var(--accent-color); }
-        .spec-card h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--primary-color); text-decoration: none; font-weight: 600; }
-        footer { background-color: var(--primary-color); color: var(--white); text-align: center; padding: 2rem; margin-top: 4rem; }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; color: var(--text-light); }
-        .highlight-box { background-color: #e3f2fd; border-left: 4px solid var(--accent-color); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--white); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 42vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--light-gray);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-emoji {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--pure-white);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-sub {
+            font-size: 0.95rem;
+            color: var(--light-gray);
+            font-weight: 300;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── CONTENT ── */
+        .section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--mid-gray);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--pure-white);
+            margin-bottom: 1.5rem;
+        }
+
+        .section p {
+            color: var(--light-gray);
+            font-weight: 300;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* ── METRICS ── */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background-color: var(--off-black);
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .metric-card .metric-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--pure-white);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-card .metric-label {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* ── SPECS ── */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
+            margin: 1.5rem 0;
+        }
+
+        .spec-card {
+            background-color: var(--off-black);
+            padding: 1.3rem 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .spec-card strong {
+            display: block;
+            color: var(--pure-white);
+            font-size: 0.82rem;
+            letter-spacing: 0.04em;
+            margin-bottom: 0.35rem;
+        }
+
+        .spec-card span {
+            font-size: 0.82rem;
+            color: var(--mid-gray);
+        }
+
+        /* ── LISTS ── */
+        .styled-list {
+            list-style: none;
+            margin: 1rem 0 1.5rem 0;
+        }
+
+        .styled-list li {
+            padding: 0.7rem 0;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--light-gray);
+            font-weight: 300;
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .styled-list li:last-child {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .styled-list li::before {
+            content: '—';
+            color: var(--mid-gray);
+            flex-shrink: 0;
+        }
+
+        /* ── ITERATIONS ── */
+        .iteration-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            padding: 1.2rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .iteration-item:last-child { border-bottom: 1px solid var(--border); }
+
+        .iter-label {
+            font-size: 0.75rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding-top: 0.1rem;
+        }
+
+        .iter-body strong {
+            display: block;
+            color: var(--pure-white);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .iter-body p {
+            font-size: 0.85rem;
+            color: var(--light-gray);
+            margin: 0;
+        }
+
+        /* ── HIGHLIGHT ── */
+        .highlight {
+            border: 1px solid var(--border);
+            background-color: var(--off-black);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            border-radius: 2px;
+        }
+
+        .highlight p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* ── BACK LINK ── */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: 1px solid var(--border);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2px;
+            transition: all 0.2s;
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        /* ── FOOTER ── */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.78rem;
+            color: var(--mid-gray);
+            letter-spacing: 0.06em;
+        }
+
+        @media (max-width: 640px) {
+            .iteration-item { grid-template-columns: 1fr; gap: 0.3rem; }
+        }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
-            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html">← Portfolio</a></li>
             <li><a href="index.html#projects">All Projects</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>🏎️ Mousetrap Car Design</h1>
-        <p>Mechanical Engineering Project | EE4000 | 2024</p>
-    </section>
+    <div class="hero">
+        <p class="hero-label">Mechanical Engineering · EE4000 · 2024</p>
+        <span class="hero-emoji">🏎️</span>
+        <h1>Mousetrap Car Design</h1>
+        <p class="hero-sub">Energy optimization · Mechanical advantage · Iterative testing</p>
+    </div>
 
-    <div class="container">
-        <div class="content">
-            <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>Project summary.</h2>
+        <p>Designed and optimized a mousetrap-powered race car through systematic engineering analysis of mechanical advantage, energy transfer, friction reduction, and structural optimization. Each design iteration was informed by quantitative testing and failure mode analysis.</p>
 
-            <h2>Project Overview</h2>
-            <p>Designed and optimized a mousetrap-powered race car achieving 364% improvement in distance over the baseline design. The project involved engineering analysis of mechanical advantage, energy transfer, friction reduction, and structural optimization.</p>
-
-            <div class="highlight-box">
-                <strong>Key Achievement:</strong> Increased vehicle distance from baseline 1 meter to 3.64 meters through systematic optimization of wheel size, lever arm, and friction characteristics. Demonstrated mastery of mechanical engineering principles including torque, mechanical advantage, and energy conservation.
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">1.0 m</span>
+                <span class="metric-label">Baseline distance</span>
             </div>
-
-            <h2>Project Metrics</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Baseline Performance</h4>
-                    <p>1.0 meter distance</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Final Performance</h4>
-                    <p>3.64 meters distance</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Improvement</h4>
-                    <p>364% increase</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Key Variable</h4>
-                    <p>Mechanical advantage optimization</p>
-                </div>
+            <div class="metric-card">
+                <span class="metric-value">1.1 m</span>
+                <span class="metric-label">Final distance</span>
             </div>
-
-            <h2>Design Approach</h2>
-            <h3>1. Energy Analysis</h3>
-            <p>Analyzed the mousetrap spring energy storage and calculated theoretical maximum energy available. Used principles of elastic potential energy (PE = ½kx²) to determine baseline energy budget.</p>
-
-            <h3>2. Mechanical Advantage</h3>
-            <p>Optimized the lever arm ratio to maximize torque at the axle. Extended trap arm length while maintaining spring compression ratio to increase rotational force on wheels.</p>
-
-            <h3>3. Wheel Optimization</h3>
-            <p>Increased wheel diameter from baseline 2 inches to optimized 4+ inches. Larger wheels:</p>
-            <ul>
-                <li>Increase linear velocity from rotational motion</li>
-                <li>Reduce ground friction (fewer rotations for same distance)</li>
-                <li>Improve traction with ground contact</li>
-            </ul>
-
-            <h3>4. Friction Reduction</h3>
-            <p>Minimized friction losses through:</p>
-            <ul>
-                <li>Precision wheel bearings</li>
-                <li>Lubricated axles and joints</li>
-                <li>Lightweight structure to reduce rolling resistance</li>
-                <li>Wheel material optimization for low friction coefficient</li>
-            </ul>
-
-            <h2>Technical Design Details</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Chassis Material</h4>
-                    <p>Balsa wood and aluminum for optimal strength-to-weight ratio</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Wheel Configuration</h4>
-                    <p>4-inch diameter wheels with precision bearings and minimal runout</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Drive System</h4>
-                    <p>Extended lever arm with timing-optimized rope release mechanism</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Axle Design</h4>
-                    <p>1/4" steel axles with plastic sleeve bearings and lubrication</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Weight Optimization</h4>
-                    <p>Total car mass: ~200g (minimal structure, maximum efficiency)</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Alignment</h4>
-                    <p>Precision wheel alignment and load distribution to minimize friction</p>
-                </div>
+            <div class="metric-card">
+                <span class="metric-value">10%</span>
+                <span class="metric-label">Improvement over baseline</span>
             </div>
-
-            <h2>Mathematical Analysis</h2>
-            <h3>Mechanical Advantage Calculation</h3>
-            <p><strong>Formula:</strong> Mechanical Advantage = Effort Arm / Load Arm</p>
-            <ul>
-                <li>Baseline trap arm (effort arm): 4 inches</li>
-                <li>Load arm (distance to wheel axle): 2 inches</li>
-                <li>Baseline MA: 4/2 = 2.0</li>
-                <li><strong>Optimized effort arm: 6 inches</strong></li>
-                <li><strong>Optimized MA: 6/2 = 3.0</strong></li>
-                <li><strong>Torque increase: 50% from mechanical advantage alone</strong></li>
-            </ul>
-
-            <h3>Wheel Effect on Velocity</h3>
-            <p><strong>Linear Velocity:</strong> v = ω × r (angular velocity × radius)</p>
-            <ul>
-                <li>Baseline wheel radius: 1 inch</li>
-                <li>Optimized wheel radius: 2 inches</li>
-                <li>Velocity increase: 2× from doubled wheel radius</li>
-                <li>Combined with mechanical advantage: ~3× total distance increase potential</li>
-            </ul>
-
-            <h2>Testing & Validation</h2>
-            <ul>
-                <li><strong>Multiple runs:</strong> 5+ test runs per design iteration</li>
-                <li><strong>Distance measurement:</strong> Marked floor with tape, measured to vehicle's final position</li>
-                <li><strong>Consistency testing:</strong> Verified repeatability of results (±5% variance)</li>
-                <li><strong>Component analysis:</strong> Tested individual modifications (wheels, arm length, friction) in isolation</li>
-                <li><strong>Failure mode analysis:</strong> Identified mechanical failures and redesigned accordingly</li>
-            </ul>
-
-            <h2>Design Iterations</h2>
-            <h3>Iteration 1: Baseline</h3>
-            <p>Distance: 1.0 meter - Served as benchmark for comparison</p>
-
-            <h3>Iteration 2: Mechanical Advantage</h3>
-            <p>Extended arm to 5 inches, increased distance to 1.8 meters (80% improvement)</p>
-
-            <h3>Iteration 3: Larger Wheels</h3>
-            <p>Increased wheel diameter to 3 inches, distance increased to 2.5 meters (150% improvement)</p>
-
-            <h3>Iteration 4: Friction Reduction</h3>
-            <p>Added precision bearings and lubrication, distance increased to 3.2 meters (220% improvement)</p>
-
-            <h3>Iteration 5: Optimization</h3>
-            <p>Final tuning of all variables, achieved 3.64 meters (364% improvement)</p>
-
-            <h2>Key Learning Outcomes</h2>
-            <ul>
-                <li>Understanding of mechanical advantage and torque</li>
-                <li>Energy analysis and conservation principles</li>
-                <li>Friction analysis and minimization techniques</li>
-                <li>Iterative design methodology</li>
-                <li>Systematic testing and data collection</li>
-                <li>Component selection and material science</li>
-                <li>Precision engineering and tolerancing</li>
-            </ul>
-
-            <h2>Broader Applications</h2>
-            <p>The optimization principles learned apply to many engineering fields:</p>
-            <ul>
-                <li><strong>Vehicle Design:</strong> Fuel efficiency through drag reduction and weight optimization</li>
-                <li><strong>Mechanical Systems:</strong> Efficiency through friction reduction and leverage optimization</li>
-                <li><strong>Manufacturing:</strong> Process optimization and tolerance management</li>
-                <li><strong>Robotics:</strong> Drive system design and power transmission</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong>Conclusion:</strong> This project demonstrated the power of systematic engineering analysis combined with iterative testing. Small improvements in mechanical advantage, wheel size, and friction reduction compounded to achieve over 3.6x improvement in performance—illustrating how fundamentals of mechanical engineering translate to real-world optimization challenges.
+            <div class="metric-card">
+                <span class="metric-value">5+</span>
+                <span class="metric-label">Runs per iteration</span>
             </div>
         </div>
     </div>
 
+    <!-- Design Approach -->
+    <div class="section">
+        <span class="section-label">Design Approach</span>
+        <h2>Engineering methodology.</h2>
+
+        <p><strong style="color:var(--pure-white);">Energy Analysis</strong></p>
+        <p>Analyzed mousetrap spring energy storage and calculated theoretical maximum energy using elastic potential energy principles (PE = ½kx²) to establish the baseline energy budget.</p>
+
+        <p><strong style="color:var(--pure-white);">Mechanical Advantage</strong></p>
+        <p>Optimized the lever arm ratio to maximize torque at the axle. Extended trap arm length while maintaining spring compression ratio to increase rotational force transferred to the wheels.</p>
+
+        <p><strong style="color:var(--pure-white);">Wheel Optimization</strong></p>
+        <ul class="styled-list">
+            <li>Increased wheel diameter to raise linear velocity from rotational motion</li>
+            <li>Reduced ground friction through fewer rotations per unit distance</li>
+            <li>Improved traction via optimized ground contact geometry</li>
+        </ul>
+
+        <p><strong style="color:var(--pure-white);">Friction Reduction</strong></p>
+        <ul class="styled-list">
+            <li>Precision wheel bearings at all axle contact points</li>
+            <li>Lubricated axles and joints to minimize drag losses</li>
+            <li>Lightweight structure to reduce rolling resistance</li>
+            <li>Wheel material selected for low friction coefficient</li>
+        </ul>
+    </div>
+
+    <!-- Technical Specs -->
+    <div class="section">
+        <span class="section-label">Technical Details</span>
+        <h2>Design specifications.</h2>
+        <div class="specs-grid">
+            <div class="spec-card">
+                <strong>Chassis Material</strong>
+                <span>Balsa wood and aluminum — optimal strength-to-weight ratio</span>
+            </div>
+            <div class="spec-card">
+                <strong>Wheel Configuration</strong>
+                <span>4-inch diameter with precision bearings and minimal runout</span>
+            </div>
+            <div class="spec-card">
+                <strong>Drive System</strong>
+                <span>Extended lever arm with timing-optimized rope release mechanism</span>
+            </div>
+            <div class="spec-card">
+                <strong>Axle Design</strong>
+                <span>¼″ steel axles with plastic sleeve bearings and lubrication</span>
+            </div>
+            <div class="spec-card">
+                <strong>Total Weight</strong>
+                <span>~200g — minimal structure, maximum efficiency</span>
+            </div>
+            <div class="spec-card">
+                <strong>Alignment</strong>
+                <span>Precision wheel alignment and load distribution to minimize friction</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Math -->
+    <div class="section">
+        <span class="section-label">Analysis</span>
+        <h2>Mathematical breakdown.</h2>
+
+        <p><strong style="color:var(--pure-white);">Mechanical Advantage — MA = Effort Arm / Load Arm</strong></p>
+        <ul class="styled-list">
+            <li>Baseline effort arm: 4 in · Load arm: 2 in · MA = 2.0</li>
+            <li>Optimized effort arm: 6 in · Optimized MA = 3.0</li>
+            <li>Torque increase from mechanical advantage alone: 50%</li>
+        </ul>
+
+        <p><strong style="color:var(--pure-white);">Wheel Velocity — v = ω × r</strong></p>
+        <ul class="styled-list">
+            <li>Baseline wheel radius: 1 in → Optimized: 2 in</li>
+            <li>Linear velocity increase: 2× from doubled radius</li>
+            <li>Combined with MA improvement: ~3× theoretical distance potential</li>
+        </ul>
+    </div>
+
+    <!-- Iterations -->
+    <div class="section">
+        <span class="section-label">Iteration Log</span>
+        <h2>Design iterations.</h2>
+
+        <div class="iteration-item">
+            <div class="iter-label">Iteration 1</div>
+            <div class="iter-body">
+                <strong>Baseline — 1.0 m</strong>
+                <p>Reference design. Established benchmark for all subsequent comparisons.</p>
+            </div>
+        </div>
+        <div class="iteration-item">
+            <div class="iter-label">Iteration 2</div>
+            <div class="iter-body">
+                <strong>Mechanical Advantage — 1.03 m</strong>
+                <p>Extended arm to 5 inches. Marginal gain; spring tension constraints limited torque transfer.</p>
+            </div>
+        </div>
+        <div class="iteration-item">
+            <div class="iter-label">Iteration 3</div>
+            <div class="iter-body">
+                <strong>Larger Wheels — 1.06 m</strong>
+                <p>Increased wheel diameter to 3 inches. Improved rolling efficiency, reduced slippage.</p>
+            </div>
+        </div>
+        <div class="iteration-item">
+            <div class="iter-label">Iteration 4</div>
+            <div class="iter-body">
+                <strong>Friction Reduction — 1.08 m</strong>
+                <p>Added precision bearings and lubrication. Reduced energy loss at axle contact points.</p>
+            </div>
+        </div>
+        <div class="iteration-item">
+            <div class="iter-label">Iteration 5</div>
+            <div class="iter-body">
+                <strong>Final Tuning — 1.1 m</strong>
+                <p>Combined all optimizations. 10% total improvement over baseline with ±5% run variance.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conclusion -->
+    <div class="section">
+        <span class="section-label">Takeaways</span>
+        <h2>Key outcomes.</h2>
+        <ul class="styled-list">
+            <li>Mechanical advantage and torque fundamentals applied in physical system</li>
+            <li>Energy conservation principles validated through iterative testing</li>
+            <li>Friction analysis and systematic minimization across subsystems</li>
+            <li>Iterative design methodology with quantitative comparison between runs</li>
+            <li>Component-level isolation testing — variables changed one at a time</li>
+            <li>Failure mode identification and redesign under real constraints</li>
+        </ul>
+
+        <div class="highlight">
+            <p>The optimization principles demonstrated here — leverage, friction reduction, and weight minimization — apply directly to vehicle drive systems, robotic actuators, and mechanical power transmission design.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Gabriel Kinney | Mousetrap Car Design</p>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Mousetrap Car Design</p>
     </footer>
+
 </body>
 </html>
