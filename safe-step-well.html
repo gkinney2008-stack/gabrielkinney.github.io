@@ -3,491 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safe Step Well - Gabriel Kinney Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Safe Step – Gabriel Kinney</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --black: #000000;
-            --white: #ffffff;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #4a4a4a;
-            --light-gray: #f5f5f5;
-            --border-gray: #e0e0e0;
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--black);
-            background-color: var(--white);
-            font-weight: 400;
-            letter-spacing: 0.3px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
         }
 
         nav {
-            background-color: var(--white);
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-gray);
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
         }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        nav a {
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        nav a:hover {
-            color: var(--medium-gray);
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .back-link:hover {
-            color: var(--medium-gray);
-        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
 
         .hero {
-            background-color: var(--white);
-            color: var(--black);
-            padding: 5rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-gray);
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
         }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; }
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
 
-        .hero p {
-            font-size: 1.1rem;
-            color: var(--medium-gray);
-            font-weight: 400;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .content {
-            background-color: var(--white);
-            padding: 3rem 0;
-        }
-
-        h2 {
-            color: var(--black);
-            font-family: 'Inter', sans-serif;
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.75rem;
-            font-weight: 700;
-            border-bottom: 1px solid var(--border-gray);
-            padding-bottom: 0.75rem;
-            letter-spacing: -0.5px;
-        }
-
-        h3 {
-            color: var(--black);
-            margin-top: 1.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-        }
-
-        h4 {
-            color: var(--black);
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        p {
-            color: var(--medium-gray);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .spec-card {
-            background-color: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 0;
-            border-left: 2px solid var(--black);
-        }
-
-        .spec-card p {
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .image-placeholder {
+        /* Prototype photo */
+        .proto-photo {
             width: 100%;
-            height: 350px;
-            background-color: var(--light-gray);
-            border-radius: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--black);
-            font-size: 80px;
+            max-height: 400px;
+            object-fit: cover;
+            object-position: center;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            filter: grayscale(100%);
             margin: 2rem 0;
-            border: 1px solid var(--border-gray);
+            display: block;
         }
 
-        .highlight-box {
-            background-color: var(--light-gray);
-            border-left: 2px solid var(--black);
-            padding: 1.5rem;
-            margin: 1.5rem 0;
-            border-radius: 0;
-        }
+        /* Metrics */
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+        .metric-card { background-color: var(--off-black); padding: 1.5rem; border: 1px solid var(--border); }
+        .metric-card .metric-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--pure-white); display: block; margin-bottom: 0.3rem; }
+        .metric-card .metric-label { font-size: 0.72rem; color: var(--mid-gray); letter-spacing: 0.08em; text-transform: uppercase; }
 
-        .highlight-box strong {
-            color: var(--black);
-            font-weight: 600;
-        }
+        /* Specs */
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
 
-        ul, ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
+        /* Lists */
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
 
-        li {
-            margin-bottom: 0.75rem;
-            color: var(--medium-gray);
-            line-height: 1.8;
-        }
+        /* Stages */
+        .stage-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
 
-        li strong {
-            color: var(--black);
-            font-weight: 600;
-        }
+        /* Financial table */
+        .fin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .fin-card { background-color: var(--off-black); padding: 1.5rem; border: 1px solid var(--border); }
+        .fin-card .fin-year { font-size: 0.72rem; color: var(--mid-gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+        .fin-card .fin-rev { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--pure-white); display: block; margin-bottom: 0.5rem; }
+        .fin-card span { font-size: 0.78rem; color: var(--mid-gray); display: block; margin-bottom: 0.2rem; }
 
-        footer {
-            background-color: var(--white);
-            color: var(--black);
-            text-align: center;
-            padding: 2.5rem;
-            margin-top: 4rem;
-            border-top: 1px solid var(--border-gray);
-        }
+        /* Highlight */
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.95rem; }
 
-        footer p {
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
-            margin: 0.25rem 0;
-        }
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
 
-        .download-section {
-            margin: 2rem 0;
-            padding: 2rem;
-            background-color: var(--light-gray);
-            border-radius: 0;
-            text-align: center;
-            border: 1px solid var(--border-gray);
-        }
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
 
-        .download-section a {
-            display: inline-block;
-            margin: 0.75rem;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--white);
-            color: var(--black);
-            text-decoration: none;
-            border: 1px solid var(--black);
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
-        }
-
-        .download-section a:hover {
-            background-color: var(--black);
-            color: var(--white);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .specs-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .content {
-                padding: 1.5rem 0;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
+        @media (max-width: 640px) {
+            .stage-item { grid-template-columns: 1fr; gap: 0.3rem; }
+            .fin-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
-            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html">← Portfolio</a></li>
             <li><a href="index.html#projects">All Projects</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>🛡️ Safe Step Well</h1>
-        <p>Intelligent Fall Detection System for Elderly Care</p>
-    </section>
+    <div class="hero">
+        <p class="hero-label">Embedded Systems · Healthcare Tech · 2026</p>
+        <span class="hero-emoji">🧑‍🦯</span>
+        <h1>Safe Step</h1>
+        <p class="hero-sub">Intelligent fall detection system for elderly care</p>
+    </div>
 
-    <div class="container">
-        <div class="content">
-            <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>Executive summary.</h2>
+        <p>Safe Step is an intelligent, wearable fall detection system providing real-time alerts and reduced emergency response time for elderly adults. Combining sensor fusion, custom C++ algorithms, and privacy-first local processing, it delivers professional-grade fall detection at a fraction of the cost of existing solutions.</p>
 
-            <h2>Executive Summary</h2>
-            <p>Safe Step Well is an intelligent, wearable fall detection system designed to provide real-time alerts and reduce emergency response time for elderly adults and those at risk of falls. By combining advanced sensor fusion, machine learning algorithms, and privacy-first design, Safe Step Well delivers professional-grade fall detection at a fraction of the cost of existing solutions.</p>
+        <img src="safestep protoype.jpg" alt="Safe Step prototype" class="proto-photo" />
 
-            <div class="highlight-box">
-                <strong>Key Achievement:</strong> A comprehensive fall detection system that outperforms competitors on accuracy, speed, and cost while maintaining accessibility and privacy through local processing and encrypted communication.
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">96%</span>
+                <span class="metric-label">Sensitivity</span>
             </div>
-
-            <div class="image-placeholder">🛡️</div>
-
-            <h2>The Problem</h2>
-            <p>Falls are a critical public health issue:</p>
-            <ul>
-                <li><strong>27,000 annual deaths</strong> in the US from falls among adults 65+</li>
-                <li><strong>3 million</strong> nonfatal fall injuries treated in emergency departments annually</li>
-                <li><strong>$50 billion+ healthcare costs</strong> annually from fall-related injuries</li>
-                <li><strong>1 in 4</strong> adults aged 65+ report falling each year</li>
-                <li><strong>Existing solutions gap:</strong> High false positives, expensive ($300-$1,000+), cloud dependent, slow alert times</li>
-            </ul>
-
-            <h2>Our Solution</h2>
-            <p>Safe Step Well combines hardware, firmware, and algorithms to deliver an intelligent fall detection system:</p>
-
-            <h3>Technical Architecture</h3>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Primary Microcontroller</h4>
-                    <p><strong>BBC micro:bit V2</strong><br>ARM Cortex-M4, 64 MHz, 128KB RAM, 512KB Flash, built-in sensors</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Accelerometer</h4>
-                    <p><strong>ST LSM303</strong><br>±16G range, integrated, real-time acceleration measurement</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Gyroscope</h4>
-                    <p><strong>ST L3GD20H</strong><br>±2000°/s, orientation validation, posture detection</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Wireless</h4>
-                    <p><strong>Bluetooth Low Energy 5.0</strong><br>&lt;1 second alert latency, 100ms advertising</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Firmware</h4>
-                    <p><strong>C++ on ARM Mbed OS</strong><br>Real-time processing, minimal latency, optimized power</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Power</h4>
-                    <p><strong>2× CR2032 Batteries</strong><br>7-14 day runtime, &lt;15mA avg current</p>
-                </div>
+            <div class="metric-card">
+                <span class="metric-value">&lt;4%</span>
+                <span class="metric-label">False positive rate</span>
             </div>
-
-            <h2>Advanced Algorithm</h2>
-            <p>The core differentiator is our 3-stage fall detection algorithm:</p>
-
-            <h3>Stage 1: Freefall Detection</h3>
-            <p>Detects rapid acceleration drop indicating loss of ground contact. Triggers when G-force drops below 0.5G (threshold adjustable based on user profile).</p>
-
-            <h3>Stage 2: Impact Confirmation</h3>
-            <p>Validates fall by detecting high-G spike (&gt;2.5G) following freefall phase. Eliminates false positives from sudden sitting or jumping (which lack proper deceleration signature).</p>
-
-            <h3>Stage 3: Orientation Validation</h3>
-            <p>Uses gyroscope data to confirm horizontal posture after impact, confirming the person is lying down and unable to self-recover. Validates position for 500-1000ms before triggering alert.</p>
-
-            <div class="highlight-box">
-                <strong>Performance Metrics:</strong><br>
-                • Sensitivity: 96% (detects 96 of 100 actual falls)<br>
-                • Specificity: 94% (correctly rejects 94 of 100 non-falls)<br>
-                • False Positive Rate: &lt;4%<br>
-                • Alert Latency: &lt;1 second<br>
-                • Battery Life: 7-14 days
+            <div class="metric-card">
+                <span class="metric-value">&lt;1s</span>
+                <span class="metric-label">Alert latency</span>
             </div>
-
-            <h2>Market Opportunity</h2>
-            <h3>Total Addressable Market (TAM)</h3>
-            <p><strong>$16.3 Billion</strong> global fall detection market by 2032</p>
-
-            <h3>Serviceable Addressable Market (SAM - 3 year)</h3>
-            <p><strong>$45 Million</strong> addressable by Safe Step Well with aggressive distribution</p>
-
-            <h3>Competitive Advantages</h3>
-            <ul>
-                <li><strong>Price:</strong> $49.99 vs. $300-$1,000+ competitors (10x cheaper)</li>
-                <li><strong>Accuracy:</strong> 96% sensitivity vs. 85-90% for wearable-based systems</li>
-                <li><strong>Speed:</strong> &lt;1 second vs. 5-10 seconds for cloud-dependent systems</li>
-                <li><strong>Privacy:</strong> Local processing, no cloud dependency (vs. competitors requiring data upload)</li>
-                <li><strong>Design:</strong> Stylish wearable vs. bulky medical devices</li>
-                <li><strong>Ease of Use:</strong> One-tap emergency dismissal, automatic caregiver notification</li>
-            </ul>
-
-            <h2>Go-to-Market Strategy</h2>
-
-            <h3>Phase 1: Direct-to-Consumer (Q1-Q3 2026)</h3>
-            <ul>
-                <li>Launch on Amazon, Shopify, personal website</li>
-                <li>Target: 10,000 units, $500K revenue</li>
-                <li>Marketing: Social media, elderly care forums, caregiver networks</li>
-                <li>CAC: $12, LTV: $180 (15:1 ratio)</li>
-            </ul>
-
-            <h3>Phase 2: Retail Distribution (Q4 2026 - Q2 2027)</h3>
-            <ul>
-                <li>Partner with CVS/Walgreens, Best Buy, medical supply stores</li>
-                <li>Target: 50,000+ units, $2.5M revenue</li>
-                <li>Wholesale margin: 40%, retailer margin: 30%</li>
-            </ul>
-
-            <h3>Phase 3: Institutional Sales (Q3 2027 onwards)</h3>
-            <ul>
-                <li>Senior living communities, assisted living facilities, hospitals</li>
-                <li>Bulk pricing: $20-25/unit, fleet management software</li>
-                <li>Target: $3B+ annual revenue at scale</li>
-            </ul>
-
-            <h2>Financial Projections</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Year 1 (2026)</h4>
-                    <p><strong>Revenue:</strong> $750,000<br><strong>Net Income:</strong> ($50,000) loss<br><strong>Units:</strong> 15,000<br><strong>Focus:</strong> Market validation</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Year 2 (2027)</h4>
-                    <p><strong>Revenue:</strong> $4,200,000<br><strong>Net Income:</strong> ($300,000) loss<br><strong>Units:</strong> 84,000<br><strong>Focus:</strong> Scale production</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Year 3 (2028)</h4>
-                    <p><strong>Revenue:</strong> $12,500,000<br><strong>Net Income:</strong> $1,800,000 profit<br><strong>Units:</strong> 250,000<br><strong>Focus:</strong> Profitability</p>
-                </div>
+            <div class="metric-card">
+                <span class="metric-value">$49.99</span>
+                <span class="metric-label">Target price</span>
             </div>
-
-            <h2>Regulatory & Compliance</h2>
-            <ul>
-                <li><strong>FDA Path:</strong> 510(k) Class II device (Q3 2026 submission target)</li>
-                <li><strong>Data Privacy:</strong> HIPAA compliant, GDPR ready (local processing)</li>
-                <li><strong>Accessibility:</strong> WCAG AA compliance, multiple alert modalities</li>
-                <li><strong>Testing:</strong> 50 elderly volunteers (Phase 1), 200 participants (Phase 2)</li>
-            </ul>
-
-            <h2>Team Requirements</h2>
-            <ul>
-                <li><strong>CEO/Hardware Engineer:</strong> Product vision, hardware design, manufacturing</li>
-                <li><strong>CTO/Firmware Engineer:</strong> Algorithm development, embedded systems, mobile apps</li>
-                <li><strong>Business Lead:</strong> Sales, marketing, go-to-market strategy</li>
-            </ul>
-
-            <h2>Funding Request</h2>
-            <div class="highlight-box">
-                <strong>Seed Round Target:</strong> $500,000<br><br>
-                <strong>Use of Capital:</strong><br>
-                • Product Development (40%): $200,000<br>
-                • FDA Regulatory (15%): $75,000<br>
-                • Manufacturing Setup (25%): $125,000<br>
-                • Marketing & Sales (15%): $75,000<br>
-                • Operations (5%): $25,000
-            </div>
-
-            <h2>Timeline</h2>
-            <ul>
-                <li><strong>Q2 2026:</strong> Alpha testing, initial FDA consultation</li>
-                <li><strong>Q3 2026:</strong> Beta testing, FDA 510(k) submission</li>
-                <li><strong>Q4 2026:</strong> Production scaling, retail partnerships</li>
-                <li><strong>Q1 2027:</strong> FDA approval, public launch</li>
-                <li><strong>Q2-Q4 2027:</strong> Retail distribution, institutional sales focus</li>
-            </ul>
-
-            <h2>Documentation & Resources</h2>
-            <div class="download-section">
-                <p>Access detailed documentation and business materials:</p>
-                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">📊 Full Business Plan</a>
-                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🔧 Technical Specs</a>
-                <a href="https://github.com/gabrielkinney/safe-step-well" target="_blank">🎨 Brand Guidelines</a>
-            </div>
-
-            <h2>Competitive Analysis</h2>
-            <p>Safe Step Well competes with established players:</p>
-            <ul>
-                <li><strong>Apple Watch Ultra:</strong> $799, general fitness focus, not specialized fall detection</li>
-                <li><strong>Life Alert Go:</strong> $299-$399, cloud-dependent, 5-10 second alert</li>
-                <li><strong>Medical Guardian:</strong> $200-$500, bulky pendant, 24/7 monitoring required</li>
-                <li><strong>Vayyar:</strong> $300+, camera-based (privacy concerns), high false positives</li>
-                <li><strong>SafetyLink:</strong> $200+, requires SIM card, recurring monthly fees</li>
-            </ul>
-            <p>Safe Step Well's advantage: <strong>10x cheaper, faster alerts, better accuracy, privacy-first design</strong></p>
-
-            <h2>Why This Matters</h2>
-            <p>Falls are a leading cause of disability for older Americans. Early detection and fast caregiver notification can mean the difference between a quick recovery and catastrophic injury. Safe Step Well democratizes access to professional-grade fall detection technology.</p>
-
-            <div class="highlight-box">
-                <strong>Vision:</strong> A world where no one has to fear a fall. Safe Step Well brings professional-grade fall detection to everyone—affordable, reliable, and always there.
+            <div class="metric-card">
+                <span class="metric-value">7–14d</span>
+                <span class="metric-label">Battery life</span>
             </div>
         </div>
     </div>
 
+    <!-- Problem -->
+    <div class="section">
+        <span class="section-label">Problem</span>
+        <h2>The gap in elderly care.</h2>
+        <ul class="styled-list">
+            <li>27,000 annual US deaths from falls among adults 65+</li>
+            <li>3 million nonfatal fall injuries treated in emergency departments annually</li>
+            <li>$50B+ in annual healthcare costs from fall-related injuries</li>
+            <li>1 in 4 adults aged 65+ report falling each year</li>
+            <li>Existing solutions: high false positives, $300–$1,000+, cloud-dependent, slow alert times</li>
+        </ul>
+    </div>
+
+    <!-- Hardware -->
+    <div class="section">
+        <span class="section-label">Technical Architecture</span>
+        <h2>Hardware & firmware.</h2>
+        <div class="specs-grid">
+            <div class="spec-card"><strong>Microcontroller</strong><span>BBC micro:bit V2 — ARM Cortex-M4, 64 MHz, 128KB RAM, 512KB Flash</span></div>
+            <div class="spec-card"><strong>Accelerometer</strong><span>ST LSM303 — ±16G range, real-time acceleration measurement</span></div>
+            <div class="spec-card"><strong>Gyroscope</strong><span>ST L3GD20H — ±2000°/s, orientation validation and posture detection</span></div>
+            <div class="spec-card"><strong>Wireless</strong><span>Bluetooth Low Energy 5.0 — &lt;1s alert latency, 100ms advertising interval</span></div>
+            <div class="spec-card"><strong>Firmware</strong><span>C++ on ARM Mbed OS — real-time processing, optimized power consumption</span></div>
+            <div class="spec-card"><strong>Power</strong><span>2× CR2032 — 7–14 day runtime, &lt;15mA average current draw</span></div>
+        </div>
+    </div>
+
+    <!-- Algorithm -->
+    <div class="section">
+        <span class="section-label">Algorithm</span>
+        <h2>3-stage detection pipeline.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Stage 1</div>
+            <div class="stage-body">
+                <strong>Freefall Detection</strong>
+                <p>Detects rapid acceleration drop indicating loss of ground contact. Triggers when G-force drops below 0.5G — threshold adjustable per user profile.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Stage 2</div>
+            <div class="stage-body">
+                <strong>Impact Confirmation</strong>
+                <p>Validates fall by detecting a high-G spike (&gt;2.5G) following the freefall phase. Eliminates false positives from sudden sitting or jumping, which lack the proper deceleration signature.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Stage 3</div>
+            <div class="stage-body">
+                <strong>Orientation Validation</strong>
+                <p>Uses gyroscope data to confirm horizontal posture post-impact. Validates position for 500–1000ms before triggering caregiver alert.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Gabriel Kinney | Safe Step Well</p>
-        <p>Engineering Excellence in Healthcare Technology</p>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Safe Step</p>
     </footer>
+
 </body>
 </html>
