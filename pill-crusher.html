@@ -3,250 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pill Crusher Tool - Gabriel Kinney Portfolio</title>
+    <title>Pill Crusher – Gabriel Kinney</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root { --primary-color: #003366; --accent-color: #00BCD4; --text-dark: #333333; --text-light: #666666; --bg-light: #f5f5f5; --white: #ffffff; --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
         html { scroll-behavior: smooth; }
-        body { font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; color: var(--text-dark); background-color: var(--bg-light); }
-        nav { background-color: var(--primary-color); padding: 1rem 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow); }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-        nav a { color: var(--white); text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
-        nav a:hover { color: var(--accent-color); }
-        .hero { background: linear-gradient(135deg, var(--primary-color) 0%, #002244 100%); color: var(--white); padding: 4rem 2rem; text-align: center; }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; font-family: 'Montserrat', sans-serif; font-weight: 700; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 2rem; }
-        .content { background-color: var(--white); padding: 3rem 2rem; border-radius: 8px; margin: 2rem 0; }
-        h2 { color: var(--primary-color); font-family: 'Montserrat', sans-serif; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.8rem; border-bottom: 3px solid var(--accent-color); padding-bottom: 0.5rem; }
-        h3 { color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .spec-card { background-color: var(--bg-light); padding: 1.5rem; border-radius: 6px; border-left: 4px solid var(--accent-color); }
-        .spec-card h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
-        .back-link { display: inline-block; margin-bottom: 1rem; color: var(--primary-color); text-decoration: none; font-weight: 600; }
-        footer { background-color: var(--primary-color); color: var(--white); text-align: center; padding: 2rem; margin-top: 4rem; }
-        ul { margin-left: 1.5rem; margin-bottom: 1rem; }
-        li { margin-bottom: 0.5rem; color: var(--text-light); }
-        .highlight-box { background-color: #e3f2fd; border-left: 4px solid var(--accent-color); padding: 1.5rem; margin: 1.5rem 0; border-radius: 4px; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
+        }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; }
+
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .project-photo {
+            width: 100%; max-height: 420px; object-fit: cover; object-position: center;
+            border: 1px solid var(--border); border-radius: 2px;
+            filter: grayscale(100%); margin: 2rem 0; display: block;
+        }
+
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
+
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
+
+        .stage-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
+
+        .cad-link {
+            display: flex; align-items: center; gap: 1.5rem;
+            border: 1px solid var(--border); background-color: var(--off-black);
+            padding: 1.2rem 1.5rem; border-radius: 2px; text-decoration: none;
+            transition: border-color 0.2s; margin: 2rem 0;
+        }
+        .cad-link:hover { border-color: var(--white); }
+        .cad-link img { width: 90px; height: 60px; object-fit: cover; filter: grayscale(100%); border-radius: 2px; flex-shrink: 0; }
+        .cad-link-text strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .cad-link-text span { font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; }
+
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.95rem; }
+
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
+
+        @media (max-width: 640px) { .stage-item { grid-template-columns: 1fr; gap: 0.3rem; } }
     </style>
 </head>
 <body>
+
     <nav>
         <ul>
-            <li><a href="index.html">← Back to Portfolio</a></li>
+            <li><a href="index.html">← Portfolio</a></li>
             <li><a href="index.html#projects">All Projects</a></li>
         </ul>
     </nav>
 
-    <section class="hero">
-        <h1>⚙️ Pill Crusher Tool</h1>
-        <p>Mechanical Design Project | Fall 2025</p>
-    </section>
+    <div class="hero">
+        <p class="hero-label">Mechanical Design · Fall 2025</p>
+        <span class="hero-emoji">⚙️</span>
+        <h1>Pill Crusher Tool</h1>
+        <p class="hero-sub">Accessibility engineering · Lever mechanics · CAD design</p>
+    </div>
 
-    <div class="container">
-        <div class="content">
-            <a href="index.html" class="back-link">← Back to Portfolio</a>
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>Why a pill crusher?</h2>
+        <p>Medication is vital for the sick and elderly to live longer lives. Millions of people are plagued with issues that make medication intake a difficult process. An accessible pill crusher allows users with varying disabilities to independently access their medication.</p>
 
-            <h2>Project Overview</h2>
-            <p>Designed an ergonomic pill crushing device with lever-based mechanical advantage system. The tool prioritizes accessibility, safety, and ease of use for elderly individuals and those with limited hand strength. Project includes detailed CAD modeling, parts specification, and manufacturing considerations.</p>
+        <img src="pill crusher photo.png" alt="Pill Crusher prototype" class="project-photo" />
+    </div>
 
-            <div class="highlight-box">
-                <strong>Key Achievement:</strong> Created a practical medical device that demonstrates understanding of ergonomics, mechanical advantage, material selection, and accessibility design principles. Suitable for real-world production and distribution.
+    <!-- Problem -->
+    <div class="section">
+        <span class="section-label">Problem Statement</span>
+        <h2>Who is this for?</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Dysphagia</div>
+            <div class="stage-body">
+                <strong>Difficulty Swallowing</strong>
+                <p>Up to 40% of American adults have difficulty swallowing pills, with age being a major risk factor due to increased medication use. (Harvard Health)</p>
             </div>
-
-            <h2>Design Objectives</h2>
-            <ul>
-                <li>Provide reliable pill crushing with minimal user effort</li>
-                <li>Ensure safety with no sharp edges or pinch points</li>
-                <li>Design for elderly users (arthritis, limited grip strength)</li>
-                <li>Minimize cost for consumer accessibility</li>
-                <li>Enable easy cleaning and maintenance</li>
-            </ul>
-
-            <h2>Mechanical Design</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Operating Principle</h4>
-                    <p>Two-lever mechanical advantage system multiplies user force by 3-5x</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Crushing Chamber</h4>
-                    <p>Stainless steel chamber with textured surfaces for grip</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Material</h4>
-                    <p>Aluminum body with stainless steel crushing surfaces</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Mechanism</h4>
-                    <p>Lever arm with pivot joint and spring return mechanism</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Grip Design</h4>
-                    <p>Oversized handles with ergonomic rubber coating</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Dimensions</h4>
-                    <p>200mm long, 80mm wide, optimized for one-handed use</p>
-                </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Arthritis</div>
+            <div class="stage-body">
+                <strong>Reduced Hand Strength</strong>
+                <p>48.8% of the elderly have decreased hand grip strength, and ~50% have some degree of arthritis — making standard pill crushers difficult or impossible to use. (EEAN)</p>
             </div>
-
-            <h2>Key Features</h2>
-            <h3>Mechanical Advantage</h3>
-            <p>Lever arm ratio of 4:1 means user applies 5 lbs of force to generate 20 lbs of crushing force. This makes the device accessible to users with limited strength.</p>
-
-            <h3>Accessibility Design</h3>
-            <ul>
-                <li>Large handles for users with arthritis or limited dexterity</li>
-                <li>Minimal grip strength required (5-10 lbs force)</li>
-                <li>Clear visual feedback when pill is crushed</li>
-                <li>One-handed operation possible</li>
-                <li>Easy-to-understand operation (no learning curve)</li>
-            </ul>
-
-            <h3>Safety Features</h3>
-            <ul>
-                <li>No pinch points or sharp edges</li>
-                <li>Rounded corners throughout design</li>
-                <li>Spring return prevents accidental closure on fingers</li>
-                <li>Stable base prevents tipping during use</li>
-                <li>Quick-release mechanism for stuck pills</li>
-            </ul>
-
-            <h3>Ease of Cleaning</h3>
-            <ul>
-                <li>Removable crushing chamber for thorough cleaning</li>
-                <li>Stainless steel surfaces resist staining and odors</li>
-                <li>Dishwasher safe components</li>
-                <li>No crevices or hard-to-reach areas</li>
-            </ul>
-
-            <h2>Material Selection</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Aluminum Alloy 6061</h4>
-                    <p>Body structure: Lightweight, corrosion-resistant, machinable</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Stainless Steel 304</h4>
-                    <p>Crushing surfaces: Food-safe, durable, easy to clean</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Silicone Rubber</h4>
-                    <p>Handle coating: Ergonomic grip, comfortable for extended use</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Spring Steel</h4>
-                    <p>Return spring: Reliable, repeatable operation, long life</p>
-                </div>
-            </div>
-
-            <h2>Manufacturing Process</h2>
-            <h3>Body Components</h3>
-            <ul>
-                <li>CNC machining of aluminum body for precision</li>
-                <li>Waterjet cutting for consistent chamber sizes</li>
-                <li>Anodizing for corrosion resistance and appearance</li>
-            </ul>
-
-            <h3>Crushing Chamber</h3>
-            <ul>
-                <li>Stainless steel pressing for durability</li>
-                <li>Textured surface for pill grip (prevents rotation)</li>
-                <li>Precisely matched surfaces for consistent crushing</li>
-            </ul>
-
-            <h3>Assembly</h3>
-            <ul>
-                <li>Pivot joint using stainless steel bolt and bushing</li>
-                <li>Spring pre-loaded for consistent return force</li>
-                <li>Rubber grip molded onto aluminum handles</li>
-                <li>Quality testing of each assembled unit</li>
-            </ul>
-
-            <h2>Design Considerations</h2>
-            <h3>For Elderly Users</h3>
-            <ul>
-                <li>Large clear labeling of crushing mechanism</li>
-                <li>Color-coded parts for visibility</li>
-                <li>Minimal number of steps for operation</li>
-                <li>No fine motor skills required</li>
-            </ul>
-
-            <h3>For Healthcare Providers</h3>
-            <ul>
-                <li>Easy to demonstrate correct usage</li>
-                <li>Durable enough for institutional use</li>
-                <li>Easy to sanitize and clean between patients</li>
-                <li>Compatible with medication dispensing systems</li>
-            </ul>
-
-            <h2>Performance Specifications</h2>
-            <div class="specs-grid">
-                <div class="spec-card">
-                    <h4>Crushing Force</h4>
-                    <p>Up to 200 lbs with lever advantage</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Pill Size</h4>
-                    <p>Handles standard pills up to 20mm diameter</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Durability</h4>
-                    <p>Rated for 100,000+ crushing cycles</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Effort Required</h4>
-                    <p>5-10 lbs user force for standard pills</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Cost Target</h4>
-                    <p>$12-15 manufacturing cost, $29.99 retail</p>
-                </div>
-                <div class="spec-card">
-                    <h4>Weight</h4>
-                    <p>180g - lightweight for portability</p>
-                </div>
-            </div>
-
-            <h2>Testing & Validation</h2>
-            <ul>
-                <li>Durability testing: 100,000+ cycle mechanical testing</li>
-                <li>Force testing: Verified crushing capability across pill types</li>
-                <li>Ergonomic testing: User studies with elderly participants</li>
-                <li>Safety testing: Ensured no pinch points or sharp edges</li>
-                <li>Material testing: Verified corrosion resistance and food safety</li>
-                <li>Cleaning validation: Confirmed easy sanitization and maintenance</li>
-            </ul>
-
-            <h2>Future Enhancements</h2>
-            <ul>
-                <li>Version 2: Add pill size selector with different chamber sizes</li>
-                <li>Version 2: Integrated powder collection tray</li>
-                <li>Version 3: Motorized version for users with very limited strength</li>
-                <li>Version 3: Multiple color options for better accessibility</li>
-                <li>Research: Optimize for specific pill types (tablets vs. capsules)</li>
-            </ul>
-
-            <h2>Skills Demonstrated</h2>
-            <ul>
-                <li>CAD design and 3D modeling (SolidWorks)</li>
-                <li>Mechanical advantage and lever systems</li>
-                <li>Materials science and material selection</li>
-                <li>Ergonomic design principles</li>
-                <li>Accessibility engineering</li>
-                <li>Manufacturing process design</li>
-                <li>Cost analysis and production planning</li>
-                <li>User-centered design methodology</li>
-            </ul>
-
-            <div class="highlight-box">
-                <strong>Conclusion:</strong> The Pill Crusher demonstrates how engineering principles can create practical solutions for real-world problems. By combining mechanical advantage with accessibility-focused design, the device makes medication administration easier and safer for vulnerable populations while remaining affordable and easy to manufacture.
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Vision</div>
+            <div class="stage-body">
+                <strong>Sight Issues / Blindness</strong>
+                <p>1.5 million elderly people in the US are classified as blind, and over 4.2 million Americans are visually impaired. (CDC)</p>
             </div>
         </div>
     </div>
 
+    <!-- Solutions -->
+    <div class="section">
+        <span class="section-label">Design Solutions</span>
+        <h2>How we addressed each problem.</h2>
+
+        <div class="specs-grid">
+            <div class="spec-card">
+                <strong>Pill Crusher + Pill Tray</strong>
+                <span>Increases medication accessibility for those with dysphagia. A slide-out tray makes cleanup simple once the medication is crushed.</span>
+            </div>
+            <div class="spec-card">
+                <strong>Lever-Based System & Ergonomics</strong>
+                <span>Uses mechanical advantage to reduce the force required to crush medication — accessible to users with arthritis and hand mobility issues.</span>
+            </div>
+            <div class="spec-card">
+                <strong>Braille & Large Text</strong>
+                <span>Braille and large text labeling allows visually impaired users to independently access and operate the device.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Justification -->
+    <div class="section">
+        <span class="section-label">Design Justification</span>
+        <h2>Engineering rationale.</h2>
+        <ul class="styled-list">
+            <li><strong style="color:var(--pure-white);">Why a lever?</strong> A lever-based model uses mechanical advantage to reduce the force required to crush a pill. An ergonomic grip allows for a more comfortable and accessible user experience, as the handle molds to the hand.</li>
+            <li><strong style="color:var(--pure-white);">Why a pill tray?</strong> The pill tray was added to make it easy to remove the crushed pill. This allows for easy cleanup and extraction without mess or spillage.</li>
+            <li><strong style="color:var(--pure-white);">Why Braille?</strong> Braille was added to the design to help the visually impaired who need to have crushed medication independently access and use the device.</li>
+        </ul>
+
+        <a href="pill%20crusher%20cad.png" target="_blank" class="cad-link">
+            <img src="pill crusher cad.png" alt="Pill Crusher CAD preview" />
+            <div class="cad-link-text">
+                <strong>View CAD Design</strong>
+                <span>Open full CAD render →</span>
+            </div>
+        </a>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
     <footer>
-        <p>&copy; 2026 Gabriel Kinney | Pill Crusher Tool</p>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Pill Crusher Tool</p>
     </footer>
+
 </body>
 </html>
