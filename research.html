@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research – Gabriel Kinney</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
+        }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; max-width: 560px; text-align: center; }
+
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        /* Conference photo */
+        .conf-photo {
+            width: 100%; max-height: 480px; object-fit: cover; object-position: top;
+            border: 1px solid var(--border); border-radius: 2px;
+            filter: grayscale(100%); margin: 2rem 0; display: block;
+        }
+
+        /* Paper card */
+        .paper-card {
+            border: 1px solid var(--border);
+            background-color: var(--off-black);
+            padding: 2rem;
+            border-radius: 2px;
+            margin: 2rem 0;
+        }
+        .paper-card .paper-journal {
+            font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+            color: var(--mid-gray); margin-bottom: 0.8rem; display: block;
+        }
+        .paper-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem; color: var(--pure-white);
+            margin-bottom: 0.8rem; line-height: 1.3;
+        }
+        .paper-card .authors {
+            font-size: 0.82rem; color: var(--light-gray);
+            margin-bottom: 1.2rem; font-weight: 300;
+        }
+        .paper-card .authors strong { color: var(--pure-white); font-weight: 500; }
+        .paper-card p { font-size: 0.88rem; color: var(--light-gray); font-weight: 300; margin-bottom: 1.2rem; }
+        .paper-link {
+            display: inline-block; color: var(--light-gray); text-decoration: none;
+            font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+            border: 1px solid var(--border); padding: 0.5rem 1.2rem;
+            border-radius: 2px; transition: all 0.2s;
+        }
+        .paper-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        /* Specs grid */
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
+
+        /* Styled list */
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
+
+        /* Stage items */
+        .stage-item { display: grid; grid-template-columns: 160px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
+
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.92rem; }
+
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
+
+        @media (max-width: 640px) { .stage-item { grid-template-columns: 1fr; gap: 0.3rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">← Portfolio</a></li>
+            <li><a href="index.html#experience">Experience</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <p class="hero-label">Materials Science · Computational Physics · 2024</p>
+        <span class="hero-emoji">🔬</span>
+        <h1>Research</h1>
+        <p class="hero-sub">First-principles computational research on 2D materials conducted at Fayetteville State University, published in the Journal of Nepal Physical Society.</p>
+    </div>
+
+    <!-- Conference Photo -->
+    <div class="section">
+        <span class="section-label">ANPA Conference 2024</span>
+        <h2>Presenting at conference.</h2>
+        <p>Presented original research on the electronic and magnetic properties of Scandium Carbide (Sc₂C) and (Ti,Ta)₂C MXenes at the Association of Nepali Physicists in America (ANPA) Conference 2024, supported by the U.S. Department of Energy.</p>
+        <img src="researchatconf.JPG" alt="Gabriel Kinney presenting research at ANPA Conference 2024" class="conf-photo" />
+    </div>
+
+    <!-- Published Paper -->
+    <div class="section">
+        <span class="section-label">Published Work</span>
+        <h2>Peer-reviewed publication.</h2>
+
+        <div class="paper-card">
+            <span class="paper-journal">Journal of Nepal Physical Society · ANPA Conference 2024 Special Issue · ISSN 2392-473X</span>
+            <h3>Structural Stability and Electronic Structure of (Ti, Ta)₂C MXenes</h3>
+            <p class="authors">
+                Saniya L. Lyles, Sadhana Vattikuti, <strong>Gabriel Kinney</strong>, Andrew Smith, Bhoj R. Gautam, Chandra M. Adhikari<br>
+                <span style="color:var(--mid-gray);">Department of Chemistry, Physics and Materials Science — Fayetteville State University · Cumberland International Early College High School</span>
+            </p>
+            <p>First-principles Density Functional Theory (DFT) calculations on (Ti, Ta)₂C MXenes — a family of 2D transition metal carbides — examining their electronic structure, magnetism, and optical properties. All three MXenes (Ti₂C, TiTaC, Ta₂C) were found to be non-magnetic and metallic, with electronic structure dominated by the outermost d-orbitals of the transition metals and the 2p orbital of carbon.</p>
+            <a href="https://www.nepjol.info/index.php/JNPhysSoc/article/view/72828" target="_blank" class="paper-link">Read Publication →</a>
+        </div>
+    </div>
+
+    <!-- What are MXenes -->
+    <div class="section">
+        <span class="section-label">Background</span>
+        <h2>What are MXenes?</h2>
+        <p>MXenes are graphene-like two-dimensional early transition metal carbides, nitrides, or carbonitrides with a stoichiometric formula of Mₙ₊₁Xₙ, where M is an early transition metal (Ti, Ta, Cr, etc.), X is carbon or nitrogen, and n ≥ 1. They are synthesized via selective etching of aluminum from MAX-phase precursors such as Ti₂AlC and Ta₂AlC using hydrofluoric acid or lithium fluoride/hydrochloric acid mixtures.</p>
+        <p>MXenes have attracted significant research attention due to their exceptional electronic, optical, and electrochemical properties — including high electrical conductivity, high capacitance, and strong intercalability for lithium, sodium, and potassium ions — making them promising candidates for energy storage, electrocatalysis, water purification, and gas sensing.</p>
+
+        <div class="specs-grid">
+            <div class="spec-card">
+                <strong>Metallicity</strong>
+                <span>All three (Ti, Ta)₂C MXenes are metallic with no band gap — confirmed by band structure calculations</span>
+            </div>
+            <div class="spec-card">
+                <strong>Non-magnetic</strong>
+                <span>Formation energy comparisons across all magnetic phases confirm Ti₂C, TiTaC, and Ta₂C favor the nonmagnetic phase</span>
+            </div>
+            <div class="spec-card">
+                <strong>d-orbital Dominance</strong>
+                <span>DOS at the Fermi level dominated by outermost d-orbitals of Ti/Ta and 2p orbital of carbon</span>
+            </div>
+            <div class="spec-card">
+                <strong>Anisotropic Optics</strong>
+                <span>Dielectric response is photon energy-dependent and anisotropic — particularly pronounced in TiTaC at ω=0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Methods -->
+    <div class="section">
+        <span class="section-label">Computational Methods</span>
+        <h2>How the research was conducted.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">DFT / VASP</div>
+            <div class="stage-body">
+                <strong>First-Principles Calculation</strong>
+                <p>Vienna Ab Initio Simulation Package (VASP) used for all Density Functional Theory calculations. Projector augmented wave (PAW) method with Perdew-Burke-Ernzerhof (PBE) generalized gradient approximation (GGA) for electron-electron exchange and correlation.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Parameters</div>
+            <div class="stage-body">
+                <strong>Calculation Settings</strong>
+                <p>Plane wave cutoff energy of 520 eV. Convergence criteria: 10⁻⁵ eV for energy, 10⁻² eV/Å for force. Gaussian smearing width of 0.05 eV. k-mesh of 12×12×3 for structure optimization; 17×17×5 for DOS and optical spectra (Ti₂C and TiTaC); 12×12×12 and 17×17×17 for Ta₂C.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">VESTA</div>
+            <div class="stage-body">
+                <strong>Crystal Structure Visualization</strong>
+                <p>Crystallographic presentations made using VESTA (Visualisation for Electronic Structural Analysis). Initial crystal structures sourced from the Materials Project database.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Formation Energy</div>
+            <div class="stage-body">
+                <strong>Stability Analysis</strong>
+                <p>Formation energies: Ef(Ti₂C) = −0.682 eV/atom, Ef(TiTaC) = −0.575 eV/atom, Ef(Ta₂C) = −0.438 eV/atom. Ti₂C is the most stable. All negative values confirm stability of the ordered double transition metal carbide TiTaC alongside its single-metal counterparts.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Findings -->
+    <div class="section">
+        <span class="section-label">Key Findings</span>
+        <h2>Results & conclusions.</h2>
+
+        <p><strong style="color:var(--pure-white);">Electronic Structure</strong></p>
+        <ul class="styled-list">
+            <li>Ti₂C — DOS dominated by Ti−3d states at the Fermi level and conduction band; Ti−3d and C−2p hybridize strongly in the valence band with overlapping peaks at −2.7 eV, confirming a Ti−C covalent bond</li>
+            <li>TiTaC — Ti−3d and Ta−5d projected DOS hybridize across almost all energy values in both valence and conduction bands</li>
+            <li>Ta₂C — DOS dominated by Ta−5d states throughout, with contributions from C−2p and Ta−5p</li>
+        </ul>
+
+        <p><strong style="color:var(--pure-white);">Optical Properties</strong></p>
+        <ul class="styled-list">
+            <li>At zero energy (ω = 0), imaginary part of dielectric function is zero for all three MXenes — no static light absorption</li>
+            <li>TiTaC shows heavily enhanced dielectric anisotropy even at ω = 0, with Re εₓ/Re εᵤ > 2 — a unique property of the double transition metal structure</li>
+            <li>Static dielectric constant for Ta₂C is nearly double that of Ti₂C in both in-plane and out-of-plane directions</li>
+            <li>In the infrared range (1.24–1.63 eV), imaginary part of ε(ω) for Ta₂C is negative — indicating natural passivity near Fabry-Perot resonances</li>
+        </ul>
+
+        <div class="highlight">
+            <p>This work was supported by the <strong style="color:var(--pure-white);">U.S. Department of Energy BES-RENEW</strong> award number DE-SC0024611 and published in the special issue of the Journal of Nepal Physical Society for ANPA Conference 2024.</p>
+        </div>
+    </div>
+
+    <!-- Second Research -->
+    <div class="section">
+        <span class="section-label">Additional Research</span>
+        <h2>Electronic & magnetic properties of Sc₂C.</h2>
+        <p>In parallel work presented at conference, I co-researched the electronic and magnetic properties of Scandium Carbide (Sc₂C) — evaluating its viability as an anode material for sustainable battery applications. This work used VESTA for atomic structure modeling and VASP for electronic structure simulation.</p>
+
+        <div class="specs-grid">
+            <div class="spec-card">
+                <strong>Material</strong>
+                <span>Scandium Carbide (Sc₂C) — evaluated as a 2D MXene anode candidate for Li-ion batteries</span>
+            </div>
+            <div class="spec-card">
+                <strong>Tools</strong>
+                <span>VESTA for crystallographic modeling · VASP for DFT electronic structure calculations</span>
+            </div>
+            <div class="spec-card">
+                <strong>Focus</strong>
+                <span>Band structure, density of states, magnetic properties, and energy storage viability</span>
+            </div>
+            <div class="spec-card">
+                <strong>Institution</strong>
+                <span>FSU Department of Chemistry, Physics & Materials Science · Fayetteville State University</span>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; Research · Materials Science · Computational Physics</p>
+    </footer>
+
+</body>
+</html>
