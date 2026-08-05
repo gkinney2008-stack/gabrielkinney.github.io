@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Camera System – Gabriel Kinney</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #0a0a0a;
+            --off-black: #111111;
+            --dark-gray: #222222;
+            --mid-gray: #555555;
+            --light-gray: #aaaaaa;
+            --border: #2a2a2a;
+            --white: #f5f5f5;
+            --pure-white: #ffffff;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.7;
+        }
+
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background-color: var(--black);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 2rem;
+        }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        nav a { color: var(--light-gray); text-decoration: none; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
+        nav a:hover { color: var(--white); }
+
+        .hero {
+            min-height: 42vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            padding: 4rem 2rem; border-bottom: 1px solid var(--border);
+        }
+        .hero-label { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light-gray); margin-bottom: 1.2rem; }
+        .hero-emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 700; color: var(--pure-white); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-sub { font-size: 0.95rem; color: var(--light-gray); font-weight: 300; letter-spacing: 0.06em; }
+
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; border-bottom: 1px solid var(--border); }
+        .section-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid-gray); margin-bottom: 1.5rem; display: block; }
+        .section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--pure-white); margin-bottom: 1.5rem; }
+        .section p { color: var(--light-gray); font-weight: 300; margin-bottom: 1rem; font-size: 0.95rem; }
+
+        .project-photo {
+            width: 100%; max-height: 480px; object-fit: cover; object-position: center;
+            border: 1px solid var(--border); border-radius: 2px;
+            filter: grayscale(100%); margin: 2rem 0; display: block;
+            transition: filter 0.3s ease;
+        }
+        .project-photo:hover { filter: grayscale(0%); }
+
+        .photo-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;
+        }
+        .photo-grid img {
+            width: 100%; height: 260px; object-fit: cover;
+            border: 1px solid var(--border); border-radius: 2px;
+            filter: grayscale(100%); transition: filter 0.3s ease;
+        }
+        .photo-grid img:hover { filter: grayscale(0%); }
+
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 2rem 0; }
+        .metric-card { background-color: var(--off-black); padding: 1.5rem; border: 1px solid var(--border); }
+        .metric-card .metric-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--pure-white); display: block; margin-bottom: 0.3rem; }
+        .metric-card .metric-label { font-size: 0.72rem; color: var(--mid-gray); letter-spacing: 0.08em; text-transform: uppercase; }
+
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); margin: 1.5rem 0; }
+        .spec-card { background-color: var(--off-black); padding: 1.3rem 1.5rem; border: 1px solid var(--border); }
+        .spec-card strong { display: block; color: var(--pure-white); font-size: 0.82rem; letter-spacing: 0.04em; margin-bottom: 0.35rem; }
+        .spec-card span { font-size: 0.82rem; color: var(--mid-gray); }
+
+        .styled-list { list-style: none; margin: 1rem 0 1.5rem 0; }
+        .styled-list li { padding: 0.7rem 0; border-top: 1px solid var(--border); font-size: 0.9rem; color: var(--light-gray); font-weight: 300; display: flex; gap: 0.8rem; }
+        .styled-list li:last-child { border-bottom: 1px solid var(--border); }
+        .styled-list li::before { content: '—'; color: var(--mid-gray); flex-shrink: 0; }
+
+        .stage-item { display: grid; grid-template-columns: 140px 1fr; gap: 2rem; padding: 1.2rem 0; border-top: 1px solid var(--border); }
+        .stage-item:last-child { border-bottom: 1px solid var(--border); }
+        .stage-label { font-size: 0.75rem; color: var(--mid-gray); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.1rem; }
+        .stage-body strong { display: block; color: var(--pure-white); font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .stage-body p { font-size: 0.85rem; color: var(--light-gray); margin: 0; font-weight: 300; }
+
+        .highlight { border: 1px solid var(--border); background-color: var(--off-black); padding: 1.5rem 2rem; margin: 2rem 0; border-radius: 2px; }
+        .highlight p { margin: 0; font-size: 0.95rem; }
+
+        .back-link { display: inline-block; color: var(--light-gray); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--border); padding: 0.5rem 1.2rem; border-radius: 2px; transition: all 0.2s; margin-bottom: 3rem; }
+        .back-link:hover { color: var(--pure-white); border-color: var(--white); }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid var(--border); font-size: 0.78rem; color: var(--mid-gray); letter-spacing: 0.06em; }
+
+        @media (max-width: 640px) { .stage-item { grid-template-columns: 1fr; gap: 0.3rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">← Portfolio</a></li>
+            <li><a href="index.html#projects">All Projects</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <p class="hero-label">Embedded Systems · Computer Vision · IoT</p>
+        <span class="hero-emoji">👁️</span>
+        <h1>AI Vision &<br>Smart Security Cam</h1>
+        <p class="hero-sub">Edge Detection with OpenCV & Real-Time Telemetry via Blynk IoT</p>
+    </div>
+
+    <!-- Overview -->
+    <div class="section">
+        <span class="section-label">Overview</span>
+        <h2>Introduction.</h2>
+        <p>This project combines real-time edge computer vision with IoT cloud integration to form an autonomous monitoring system. Using camera hardware paired with OpenCV image processing, the system identifies target entities and triggers instantaneous cloud notifications.</p>
+        <p>By shifting computational load to localized edge processing, the system minimizes network overhead while sending instant telemetry and push alerts via the Blynk mobile ecosystem.</p>
+
+        <!-- Image 1: Hardware -->
+        <img src="ai cam hardware.jpg" alt="AI Camera System Hardware Setup" class="project-photo" />
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">Real-Time</span>
+                <span class="metric-label">Edge Detection</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">OpenCV</span>
+                <span class="metric-label">Vision Pipeline</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">&lt; 1s</span>
+                <span class="metric-label">Alert Latency</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">Blynk</span>
+                <span class="metric-label">IoT Cloud Platform</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edge Computer Vision -->
+    <div class="section">
+        <span class="section-label">Vision Processing</span>
+        <h2>Edge detection with OpenCV.</h2>
+        <p>The core video feed is continuously processed locally using OpenCV. Frame analysis scripts detect human targets and environmental changes, drawing bounding boxes and calculating event triggers dynamically.</p>
+        
+        <!-- Image 2: OpenCV Visual Processing -->
+        <img src="Opencvphoto.png" alt="OpenCV Vision Processing Interface" class="project-photo" />
+    </div>
+
+    <!-- System Pipeline -->
+    <div class="section">
+        <span class="section-label">Architecture</span>
+        <h2>How the system communicates.</h2>
+
+        <div class="stage-item">
+            <div class="stage-label">Step 01</div>
+            <div class="stage-body">
+                <strong>Frame Capture</strong>
+                <p>The physical AI camera hardware continuously streams low-latency video feeds to the edge processing environment.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Step 02</div>
+            <div class="stage-body">
+                <strong>OpenCV Analysis</strong>
+                <p>Python and OpenCV analyze video frames in real-time, executing target identification algorithms and object classification.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Step 03</div>
+            <div class="stage-body">
+                <strong>Cloud REST API Trigger</strong>
+                <p>Upon positive target verification, an HTTP event trigger is sent directly to the Blynk Cloud REST API endpoint via HTTPS.</p>
+            </div>
+        </div>
+        <div class="stage-item">
+            <div class="stage-label">Step 04</div>
+            <div class="stage-body">
+                <strong>Mobile Alert & Dashboard</strong>
+                <p>The Blynk Mobile dashboard updates live state telemetry and dispatches a high-priority push notification to the user's smartphone.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Integration -->
+    <div class="section">
+        <span class="section-label">IoT Mobile Interface</span>
+        <h2>Blynk application & alerts.</h2>
+        <p>The user interface provides full remote visibility. Live system states appear inside the Blynk mobile app dashboard, while critical detection triggers fire instant push notifications to the phone lock screen.</p>
+        
+        <div class="photo-grid">
+            <!-- Image 3: Blynk App -->
+            <img src="blynk on phone.jpeg" alt="Blynk Dashboard on Mobile" />
+            <!-- Image 4: Blynk Notification -->
+            <img src="blynk notification.jpeg" alt="Blynk Push Alert Notification" />
+        </div>
+
+        <div class="highlight">
+            <p><strong style="color:var(--pure-white);">Key System Benefit:</strong> Combining lightweight OpenCV edge processing with cloud webhooks completely eliminates the need for 24/7 video streaming cloud costs while retaining instant remote awareness.</p>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Portfolio</a>
+    </div>
+
+    <footer>
+        <p>© 2026 Gabriel Kinney &nbsp;·&nbsp; AI Camera System · Embedded Computer Vision</p>
+    </footer>
+
+</body>
+</html>
